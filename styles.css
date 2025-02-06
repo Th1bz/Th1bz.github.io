@@ -1,0 +1,105 @@
+/* Import des polices Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;400;700&display=swap");
+
+@import "styles/variables.css";
+@import "styles/navbar.css";
+@import "styles/hero.css";
+@import "styles/particles.css";
+@import "styles/animations.css";
+
+/* Base styles */
+body {
+  font-family: var(--font-main);
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  overflow-x: hidden;
+  line-height: 1.6;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  overflow-y: auto;
+}
+
+/* Style des titres */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-headers);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Buttons */
+.btn {
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+}
+
+.btn-primary {
+  background: linear-gradient(
+    45deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  border: none;
+  color: var(--bg-color);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(
+    45deg,
+    var(--secondary-color),
+    var(--primary-color)
+  );
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.btn-outline-primary {
+  border: 2px solid var(--secondary-color);
+  color: var(--secondary-color);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--secondary-color);
+  color: var(--bg-color);
+}
+
+.cta-buttons {
+  animation: fadeInUp 1s ease-out 0.4s backwards;
+}
+
+/* Assurez-vous que le contenu reste au-dessus des particules */
+.navbar,
+.hero {
+  position: relative;
+  z-index: 1;
+}
+
+/* Cacher la scrollbar tout en gardant le scroll fonctionnel */
+/* Pour Webkit (Chrome, Safari, etc.) */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Pour Firefox */
+* {
+  scrollbar-width: none;
+}
+
+/* Pour IE/Edge */
+* {
+  -ms-overflow-style: none;
+}

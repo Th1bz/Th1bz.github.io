@@ -1,0 +1,95 @@
+/* Style spécial pour le titre principal */
+.hero h1 {
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  position: relative;
+}
+
+/* Style différent pour le texte d'introduction */
+.hero h1 .intro-text {
+  font-family: var(--font-main);
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  font-weight: 300;
+  display: block;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* Style pour le nom */
+.hero h1 .highlight {
+  font-family: var(--font-headers);
+  font-weight: 700;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  position: relative;
+}
+
+/* Hero Section */
+.hero {
+  padding: 7rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  filter: blur(150px);
+  opacity: 0.15;
+  top: -250px;
+  left: -250px;
+  animation: float 8s ease-in-out infinite;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: var(--secondary-color);
+  border-radius: 50%;
+  filter: blur(150px);
+  opacity: 0.15;
+  bottom: -200px;
+  right: -200px;
+  animation: float 10s ease-in-out infinite;
+}
+
+.highlight {
+  color: var(--primary-color);
+  position: relative;
+  display: inline-block;
+  font-family: var(--font-mono);
+}
+
+h1 {
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--header-color);
+  animation: fadeInUp 1s ease-out;
+}
+
+.lead {
+  font-family: var(--font-main);
+  font-weight: 300;
+  font-size: 1.25rem;
+  letter-spacing: 0.2px;
+  animation: fadeInUp 1s ease-out 0.2s backwards;
+}
+
+/* Ajouter l'animation uniquement sur le nom */
+.hero h1 .highlight {
+  font-family: var(--font-headers);
+  font-weight: 700;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  position: relative;
+  animation: glitch 1s linear infinite;
+}
