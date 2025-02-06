@@ -1,20 +1,12 @@
 /* Variables */
 :root {
   /*2077*/
-  /* --primary-color: #00fff5;
+  --primary-color: #00fff5;
   --secondary-color: #ff00ff;
   --bg-color: #0a0a1f;
   --text-color: #b3b3d9;
   --header-color: #ffffff;
-  --accent-color: #ffb800; */
-
-  /* Couleurs principales premium */
-  --primary-color: #c6a664; /* Or élégant */
-  --secondary-color: #ffffff; /* Blanc pur */
-  --bg-color: #1a1a1a; /* Gris très foncé */
-  --text-color: #e5e5e5; /* Blanc cassé */
-  --header-color: #ffffff; /* Blanc pur */
-  --accent-color: #dfc98a; /* Or clair */
+  --accent-color: #ffb800;
 
   /* Nuances d'or pour les effets */
   --gold-light: #f0d78c; /* Or clair brillant */
