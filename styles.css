@@ -126,8 +126,6 @@ h6 {
   animation: fadeInUp 1s ease-out 0.4s backwards;
 }
 
-/* Assurez-vous que le contenu reste au-dessus des particules */
-.navbar,
 .hero {
   position: relative;
   z-index: 1;
