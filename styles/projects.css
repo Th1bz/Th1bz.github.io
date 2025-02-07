@@ -183,3 +183,27 @@
     display: none;
   }
 }
+
+.project-instruction {
+  color: var(--text-color);
+  opacity: 0.8;
+  font-size: 0.9rem;
+  font-family: var(--font-mono);
+  animation: pulse 2s infinite;
+}
+
+.project-instruction i {
+  color: var(--primary-color);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
