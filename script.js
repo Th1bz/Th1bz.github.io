@@ -98,7 +98,9 @@ function addFadeInClass() {
     el.classList.add("fade-in");
   });
 }
+// --------------------------------------------------------------------------
 
+// --------------------------------------------------------------------------
 // Création des points lumineux
 function createGridPoints() {
   const heroSection = document.querySelector(".hero");
@@ -129,11 +131,86 @@ function createGridPoints() {
 
   gridBackground.appendChild(gridPoints);
 }
+// --------------------------------------------------------------------------
 
+// --------------------------------------------------------------------------
+// Gestion du carrousel de projets
+function initProjectCarousel() {
+  const container = document.querySelector(".carousel-container");
+  const cards = document.querySelectorAll(".project-card");
+  const prevBtn = document.querySelector(".control-prev");
+  const nextBtn = document.querySelector(".control-next");
+
+  let currentPosition = 0;
+  const totalCards = cards.length;
+
+  function updateCarousel() {
+    cards.forEach((card, index) => {
+      let position = (index - currentPosition + totalCards) % totalCards;
+      card.dataset.position = position;
+
+      // Réinitialiser le flip de toutes les cartes
+      const content = card.querySelector(".project-content");
+      if (content) {
+        content.classList.remove("flipped");
+      }
+    });
+  }
+
+  function moveNext() {
+    currentPosition = (currentPosition + 1) % totalCards;
+    updateCarousel();
+  }
+
+  function movePrev() {
+    currentPosition = (currentPosition - 1 + totalCards) % totalCards;
+    updateCarousel();
+  }
+
+  // Event listeners
+  nextBtn.addEventListener("click", moveNext);
+  prevBtn.addEventListener("click", movePrev);
+
+  // Swipe support for mobile
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  container.addEventListener("touchstart", (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+
+  container.addEventListener("touchend", (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    if (touchEndX < touchStartX) moveNext();
+    if (touchEndX > touchStartX) movePrev();
+  });
+}
+// --------------------------------------------------------------------------
+
+// --------------------------------------------------------------------------
+// Gestion du flip des cartes projets
+function initProjectCardFlip() {
+  const cards = document.querySelectorAll(".project-card");
+
+  cards.forEach((card) => {
+    const projectContent = card.querySelector(".project-content");
+    if (projectContent) {
+      projectContent.addEventListener("click", () => {
+        // Vérifier si la carte est active (position 0)
+        if (card.dataset.position === "0") {
+          projectContent.classList.toggle("flipped");
+        }
+      });
+    }
+  });
+}
+// --------------------------------------------------------------------------
 // Initialisation
 document.addEventListener("DOMContentLoaded", () => {
   createGridPoints();
   addFadeInClass();
   initScrollAnimations();
   handleSectionTransitions();
+  initProjectCarousel();
+  initProjectCardFlip();
 });
