@@ -29,9 +29,12 @@
 
 /* Hero Section */
 .hero {
-  padding: 7rem 0;
+  padding: 120px 0 7rem;
   position: relative;
   overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
 }
 
 .hero::before {

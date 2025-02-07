@@ -38,7 +38,6 @@ h6 {
 /* Buttons */
 .btn {
   padding: 0.8rem 2rem;
-  border-radius: 50px;
   font-family: var(--font-mono);
   font-weight: 500;
   transition: all 0.3s ease;
@@ -47,6 +46,13 @@ h6 {
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: 0.9rem;
+  transform: skew(-15deg);
+  border-radius: 0;
+}
+
+.btn span {
+  display: inline-block;
+  transform: skew(15deg);
 }
 
 .btn-primary {
@@ -57,26 +63,63 @@ h6 {
   );
   border: none;
   color: var(--bg-color);
+  position: relative;
+  z-index: 1;
 }
 
-.btn-primary:hover {
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
   background: linear-gradient(
     45deg,
     var(--secondary-color),
     var(--primary-color)
   );
-  transform: translateY(-2px);
+  transition: all 0.5s ease;
+  z-index: -1;
+}
+
+.btn-primary:hover::before {
+  left: 0;
+}
+
+.btn-primary:hover {
+  transform: skew(-15deg) translateY(-2px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .btn-outline-primary {
   border: 2px solid var(--secondary-color);
   color: var(--secondary-color);
+  background: transparent;
+  position: relative;
+  z-index: 1;
+}
+
+.btn-outline-primary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--secondary-color);
+  transition: all 0.5s ease;
+  z-index: -1;
+}
+
+.btn-outline-primary:hover::before {
+  left: 0;
 }
 
 .btn-outline-primary:hover {
-  background-color: var(--secondary-color);
   color: var(--bg-color);
+  transform: skew(-15deg) translateY(-2px);
+  border-color: transparent;
 }
 
 .cta-buttons {
