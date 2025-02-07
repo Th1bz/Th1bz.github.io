@@ -10,6 +10,8 @@
 @import "styles/animations.css";
 @import "styles/sectionAbout.css";
 @import "styles/projects.css";
+@import "styles/pricing.css";
+@import "styles/footer.css";
 
 /* Base styles */
 body {
