@@ -1,10 +1,14 @@
 // Ajouter une classe active à la navbar lors du scroll
 window.addEventListener("scroll", function () {
   const navbar = document.querySelector(".navbar");
+  const metaThemeColor = document.querySelector("meta[name=theme-color]");
+
   if (window.scrollY > 50) {
     navbar.classList.add("scrolled");
+    metaThemeColor.setAttribute("content", "#14142880"); // Version plus opaque
   } else {
     navbar.classList.remove("scrolled");
+    metaThemeColor.setAttribute("content", "#0A0A1F"); // Version normale
   }
 });
 
