@@ -37,12 +37,12 @@
 .hero::before {
   content: "";
   position: absolute;
-  width: 500px;
-  height: 500px;
+  width: 600px;
+  height: 600px;
   background: var(--primary-color);
   border-radius: 50%;
-  filter: blur(150px);
-  opacity: 0.15;
+  filter: blur(180px);
+  opacity: 0.25;
   top: -250px;
   left: -250px;
   animation: float 8s ease-in-out infinite;
@@ -51,12 +51,12 @@
 .hero::after {
   content: "";
   position: absolute;
-  width: 400px;
-  height: 400px;
+  width: 600px;
+  height: 600px;
   background: var(--secondary-color);
   border-radius: 50%;
-  filter: blur(150px);
-  opacity: 0.15;
+  filter: blur(180px);
+  opacity: 0.25;
   bottom: -200px;
   right: -200px;
   animation: float 10s ease-in-out infinite;
@@ -92,4 +92,34 @@ h1 {
   text-transform: uppercase;
   position: relative;
   animation: glitch 1s linear infinite;
+}
+
+/* Styles des boutons dans la hero section */
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.cta-buttons .btn {
+  margin-bottom: 1rem;
+}
+
+/* Ajustements pour mobile */
+@media (max-width: 768px) {
+  .cta-buttons {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .cta-buttons .btn {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 1rem;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
 }

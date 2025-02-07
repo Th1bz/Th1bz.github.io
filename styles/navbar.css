@@ -42,6 +42,18 @@
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
+/* Style pour les liens visités et actifs */
+.nav-link:visited,
+.nav-link:active,
+.nav-link.active {
+  color: var(--text-color);
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: var(--primary-color);
+}
+
 /* Effet de survol des liens */
 .nav-link::before {
   content: "";
@@ -58,10 +70,6 @@
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.3s ease;
-}
-
-.nav-link:hover {
-  color: var(--primary-color);
 }
 
 .nav-link:hover::before {

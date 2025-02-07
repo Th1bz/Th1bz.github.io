@@ -6,8 +6,9 @@
 @import "styles/variables.css";
 @import "styles/navbar.css";
 @import "styles/hero.css";
-@import "styles/particles.css";
+@import "styles/hero-background.css";
 @import "styles/animations.css";
+@import "styles/sectionAbout.css";
 
 /* Base styles */
 body {
