@@ -188,3 +188,130 @@ h6 {
 * {
   -ms-overflow-style: none;
 }
+
+/* Section Contact */
+.contact {
+  background: linear-gradient(135deg, rgba(15, 15, 35, 0.95), var(--bg-color));
+}
+
+.contact-form {
+  background: rgba(255, 255, 255, 0.02);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.form-control {
+  background: rgba(10, 10, 25, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem 1.2rem;
+  color: var(--text-color);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.9rem;
+}
+
+.form-control:focus {
+  background: rgba(15, 15, 35, 0.9);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(var(--primary-rgb), 0.2);
+  color: var(--text-color);
+}
+
+.form-control:focus::placeholder {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.form-group label {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.6);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.form-group textarea ~ label {
+  top: 1rem;
+  transform: none;
+}
+
+.form-control:focus ~ label,
+.form-control:not(:placeholder-shown) ~ label {
+  top: -0.5rem;
+  left: 0.8rem;
+  font-size: 0.8rem;
+  padding: 0 0.4rem;
+  background: var(--bg-color);
+  color: var(--primary-color);
+}
+
+.contact-info {
+  margin-top: 4rem;
+}
+
+.contact-info-item {
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.contact-info-item:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.contact-info-item i {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.contact-info-item h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.contact-info-item p,
+.contact-info-item a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-info-item a:hover {
+  color: var(--primary-color);
+}
+
+.form-group.valid .form-control {
+  border-color: var(--primary-color);
+  background: rgba(0, 255, 245, 0.05);
+}
+
+.form-group.invalid .form-control {
+  border-color: #ff3366;
+  background: rgba(255, 51, 102, 0.05);
+}
+
+.form-group.invalid label {
+  color: #ff3366;
+}
+
+.form-group.valid label {
+  color: var(--primary-color);
+}

@@ -38,6 +38,11 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+    <!-- EmailJS -->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+    ></script>
   </head>
   <body>
     <!-- Navbar -->
@@ -488,6 +493,112 @@
                   <span class="amount">200€</span>
                   <span class="period">HT/Jour</span>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Contact -->
+    <section
+      id="contact"
+      class="contact min-vh-100 d-flex align-items-center py-5"
+    >
+      <div class="container">
+        <h2 class="section-title text-center mb-5">Me Contacter</h2>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <form id="contactForm" class="contact-form">
+              <div class="row g-4">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="name"
+                      name="name"
+                      placeholder=""
+                      required
+                    />
+                    <label for="name">Nom</label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="email"
+                      name="email"
+                      placeholder=""
+                      required
+                    />
+                    <label for="email">Email</label>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="subject"
+                      name="subject"
+                      placeholder=""
+                      required
+                    />
+                    <label for="subject">Sujet</label>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-group">
+                    <textarea
+                      class="form-control"
+                      id="message"
+                      name="message"
+                      rows="6"
+                      placeholder=""
+                      required
+                    ></textarea>
+                    <label for="message">Message</label>
+                  </div>
+                </div>
+                <div class="col-12 text-center">
+                  <button type="submit" class="btn btn-primary">
+                    <span>Envoyer le message</span>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="contact-info mt-5">
+          <div class="row justify-content-center text-center g-4">
+            <div class="col-md-4">
+              <div class="contact-info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Localisation</h3>
+                <p>Strasbourg, France</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="contact-info-item">
+                <i class="fas fa-envelope"></i>
+                <h3>Email</h3>
+                <p>
+                  <a href="mailto:thibaultwks@gmail.com"
+                    >thibaultwks@gmail.com</a
+                  >
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="contact-info-item">
+                <i class="fas fa-phone"></i>
+                <h3>Téléphone</h3>
+                <p><a href="tel:+33767184561">+33 7 67 18 45 61</a></p>
               </div>
             </div>
           </div>

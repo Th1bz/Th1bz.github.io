@@ -209,6 +209,171 @@ function initProjectCardFlip() {
   });
 }
 // --------------------------------------------------------------------------
+
+// --------------------------------------------------------------------------
+// Initialisation de EmailJS
+(function () {
+  emailjs.init("VOTRE_CLE_PUBLIQUE"); // ⚠️ Remplacez par votre clé publique EmailJS
+})();
+
+// Validation de l'email
+function isValidEmail(email) {
+  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  return emailRegex.test(email);
+}
+
+// Gestion de la validation de l'email en temps réel
+document.getElementById("email").addEventListener("input", function () {
+  const emailInput = this;
+  const emailGroup = emailInput.closest(".form-group");
+
+  if (emailInput.value.length > 0) {
+    if (isValidEmail(emailInput.value)) {
+      emailGroup.classList.remove("invalid");
+      emailGroup.classList.add("valid");
+      emailInput.setCustomValidity("");
+    } else {
+      emailGroup.classList.remove("valid");
+      emailGroup.classList.add("invalid");
+      emailInput.setCustomValidity("Veuillez entrer une adresse email valide");
+    }
+  } else {
+    emailGroup.classList.remove("valid", "invalid");
+    emailInput.setCustomValidity("");
+  }
+});
+// --------------------------------------------------------------------------
+
+// --------------------------------------------------------------------------
+// Gestion du formulaire de contact
+document
+  .getElementById("contactForm")
+  .addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    // Vérification de l'email avant l'envoi
+    const emailInput = document.getElementById("email");
+    if (!isValidEmail(emailInput.value)) {
+      emailInput.closest(".form-group").classList.add("invalid");
+      emailInput.setCustomValidity("Veuillez entrer une adresse email valide");
+      emailInput.reportValidity();
+      return;
+    }
+
+    // Afficher un indicateur de chargement
+    const submitBtn = this.querySelector('button[type="submit"]');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML =
+      '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+    submitBtn.disabled = true;
+
+    // Préparation des paramètres
+    const templateParams = {
+      from_name: document.getElementById("name").value,
+      from_email: document.getElementById("email").value,
+      subject: document.getElementById("subject").value,
+      message: document.getElementById("message").value,
+    };
+
+    // Envoi de l'email
+    emailjs
+      .send("default_service", "template_id", templateParams) // ⚠️ Remplacez par vos IDs
+      .then(
+        function () {
+          // Succès
+          submitBtn.innerHTML = '<i class="fas fa-check"></i> Message envoyé !';
+          submitBtn.classList.remove("btn-primary");
+          submitBtn.classList.add("btn-success");
+
+          // Réinitialiser le formulaire
+          document.getElementById("contactForm").reset();
+
+          // Restaurer le bouton après 3 secondes
+          setTimeout(() => {
+            submitBtn.innerHTML = originalText;
+            submitBtn.classList.remove("btn-success");
+            submitBtn.classList.add("btn-primary");
+            submitBtn.disabled = false;
+          }, 3000);
+        },
+        function (error) {
+          // Erreur
+          console.error("Erreur:", error);
+          submitBtn.innerHTML =
+            '<i class="fas fa-exclamation-triangle"></i> Erreur lors de l\'envoi';
+          submitBtn.classList.remove("btn-primary");
+          submitBtn.classList.add("btn-danger");
+
+          // Restaurer le bouton après 3 secondes
+          setTimeout(() => {
+            submitBtn.innerHTML = originalText;
+            submitBtn.classList.remove("btn-danger");
+            submitBtn.classList.add("btn-primary");
+            submitBtn.disabled = false;
+          }, 3000);
+        }
+      );
+  });
+document
+  .getElementById("contactForm")
+  .addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    // Afficher un indicateur de chargement
+    const submitBtn = this.querySelector('button[type="submit"]');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML =
+      '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+    submitBtn.disabled = true;
+
+    // Préparation des paramètres
+    const templateParams = {
+      from_name: document.getElementById("name").value,
+      from_email: document.getElementById("email").value,
+      subject: document.getElementById("subject").value,
+      message: document.getElementById("message").value,
+    };
+
+    // Envoi de l'email
+    emailjs
+      .send("default_service", "template_id", templateParams) // ⚠️ Remplacez par mes IDs
+      .then(
+        function () {
+          // Succès
+          submitBtn.innerHTML = '<i class="fas fa-check"></i> Message envoyé !';
+          submitBtn.classList.remove("btn-primary");
+          submitBtn.classList.add("btn-success");
+
+          // Réinitialiser le formulaire
+          document.getElementById("contactForm").reset();
+
+          // Restaurer le bouton après 3 secondes
+          setTimeout(() => {
+            submitBtn.innerHTML = originalText;
+            submitBtn.classList.remove("btn-success");
+            submitBtn.classList.add("btn-primary");
+            submitBtn.disabled = false;
+          }, 3000);
+        },
+        function (error) {
+          // Erreur
+          console.error("Erreur:", error);
+          submitBtn.innerHTML =
+            '<i class="fas fa-exclamation-triangle"></i> Erreur lors de l\'envoi';
+          submitBtn.classList.remove("btn-primary");
+          submitBtn.classList.add("btn-danger");
+
+          // Restaurer le bouton après 3 secondes
+          setTimeout(() => {
+            submitBtn.innerHTML = originalText;
+            submitBtn.classList.remove("btn-danger");
+            submitBtn.classList.add("btn-primary");
+            submitBtn.disabled = false;
+          }, 3000);
+        }
+      );
+  });
+// --------------------------------------------------------------------------
 // Initialisation
 document.addEventListener("DOMContentLoaded", () => {
   createGridPoints();
