@@ -211,9 +211,9 @@ function initProjectCardFlip() {
 // --------------------------------------------------------------------------
 
 // --------------------------------------------------------------------------
-// Initialisation de EmailJS
+// Initialisation de EmailJS avec votre clé publique
 (function () {
-  emailjs.init("VOTRE_CLE_PUBLIQUE"); // ⚠️ Remplacez par votre clé publique EmailJS
+  emailjs.init("WtSDctCMaTZG5prkz");
 })();
 
 // Validation de l'email
@@ -242,9 +242,7 @@ document.getElementById("email").addEventListener("input", function () {
     emailInput.setCustomValidity("");
   }
 });
-// --------------------------------------------------------------------------
 
-// --------------------------------------------------------------------------
 // Gestion du formulaire de contact
 document
   .getElementById("contactForm")
@@ -260,7 +258,7 @@ document
       return;
     }
 
-    // Afficher un indicateur de chargement
+    // Afficher l'indicateur de chargement
     const submitBtn = this.querySelector('button[type="submit"]');
     const originalText = submitBtn.innerHTML;
     submitBtn.innerHTML =
@@ -276,104 +274,42 @@ document
     };
 
     // Envoi de l'email
-    emailjs
-      .send("default_service", "template_id", templateParams) // ⚠️ Remplacez par vos IDs
-      .then(
-        function () {
-          // Succès
-          submitBtn.innerHTML = '<i class="fas fa-check"></i> Message envoyé !';
-          submitBtn.classList.remove("btn-primary");
-          submitBtn.classList.add("btn-success");
+    emailjs.send("service_devv5tf", "template_c1yqywd", templateParams).then(
+      function () {
+        // Succès
+        submitBtn.innerHTML = '<i class="fas fa-check"></i> Message envoyé !';
+        submitBtn.classList.remove("btn-primary");
+        submitBtn.classList.add("btn-success");
 
-          // Réinitialiser le formulaire
-          document.getElementById("contactForm").reset();
+        // Réinitialiser le formulaire
+        document.getElementById("contactForm").reset();
 
-          // Restaurer le bouton après 3 secondes
-          setTimeout(() => {
-            submitBtn.innerHTML = originalText;
-            submitBtn.classList.remove("btn-success");
-            submitBtn.classList.add("btn-primary");
-            submitBtn.disabled = false;
-          }, 3000);
-        },
-        function (error) {
-          // Erreur
-          console.error("Erreur:", error);
-          submitBtn.innerHTML =
-            '<i class="fas fa-exclamation-triangle"></i> Erreur lors de l\'envoi';
-          submitBtn.classList.remove("btn-primary");
-          submitBtn.classList.add("btn-danger");
+        setTimeout(() => {
+          submitBtn.innerHTML = originalText;
+          submitBtn.classList.remove("btn-success");
+          submitBtn.classList.add("btn-primary");
+          submitBtn.disabled = false;
+        }, 3000);
+      },
+      function (error) {
+        // Erreur
+        console.error("Erreur:", error);
+        submitBtn.innerHTML =
+          '<i class="fas fa-exclamation-triangle"></i> Erreur lors de l\'envoi';
+        submitBtn.classList.remove("btn-primary");
+        submitBtn.classList.add("btn-danger");
 
-          // Restaurer le bouton après 3 secondes
-          setTimeout(() => {
-            submitBtn.innerHTML = originalText;
-            submitBtn.classList.remove("btn-danger");
-            submitBtn.classList.add("btn-primary");
-            submitBtn.disabled = false;
-          }, 3000);
-        }
-      );
-  });
-document
-  .getElementById("contactForm")
-  .addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    // Afficher un indicateur de chargement
-    const submitBtn = this.querySelector('button[type="submit"]');
-    const originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML =
-      '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
-    submitBtn.disabled = true;
-
-    // Préparation des paramètres
-    const templateParams = {
-      from_name: document.getElementById("name").value,
-      from_email: document.getElementById("email").value,
-      subject: document.getElementById("subject").value,
-      message: document.getElementById("message").value,
-    };
-
-    // Envoi de l'email
-    emailjs
-      .send("default_service", "template_id", templateParams) // ⚠️ Remplacez par mes IDs
-      .then(
-        function () {
-          // Succès
-          submitBtn.innerHTML = '<i class="fas fa-check"></i> Message envoyé !';
-          submitBtn.classList.remove("btn-primary");
-          submitBtn.classList.add("btn-success");
-
-          // Réinitialiser le formulaire
-          document.getElementById("contactForm").reset();
-
-          // Restaurer le bouton après 3 secondes
-          setTimeout(() => {
-            submitBtn.innerHTML = originalText;
-            submitBtn.classList.remove("btn-success");
-            submitBtn.classList.add("btn-primary");
-            submitBtn.disabled = false;
-          }, 3000);
-        },
-        function (error) {
-          // Erreur
-          console.error("Erreur:", error);
-          submitBtn.innerHTML =
-            '<i class="fas fa-exclamation-triangle"></i> Erreur lors de l\'envoi';
-          submitBtn.classList.remove("btn-primary");
-          submitBtn.classList.add("btn-danger");
-
-          // Restaurer le bouton après 3 secondes
-          setTimeout(() => {
-            submitBtn.innerHTML = originalText;
-            submitBtn.classList.remove("btn-danger");
-            submitBtn.classList.add("btn-primary");
-            submitBtn.disabled = false;
-          }, 3000);
-        }
-      );
+        setTimeout(() => {
+          submitBtn.innerHTML = originalText;
+          submitBtn.classList.remove("btn-danger");
+          submitBtn.classList.add("btn-primary");
+          submitBtn.disabled = false;
+        }, 3000);
+      }
+    );
   });
 // --------------------------------------------------------------------------
+
 // Initialisation
 document.addEventListener("DOMContentLoaded", () => {
   createGridPoints();
