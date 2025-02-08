@@ -5,6 +5,7 @@
   transition: all 0.5s ease-in-out;
   position: relative;
   overflow: hidden;
+  opacity: 0.8;
 }
 
 .section-title {
