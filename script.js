@@ -12,10 +12,18 @@ window.addEventListener("scroll", function () {
   }
 });
 
-// Animation smooth scroll pour les liens de navigation
+// Animation smooth scroll pour les liens de navigation et fermeture du menu mobile
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
     e.preventDefault();
+
+    // Fermer le menu mobile si ouvert
+    const navbarCollapse = document.querySelector(".navbar-collapse");
+    if (navbarCollapse.classList.contains("show")) {
+      document.querySelector(".navbar-toggler").click();
+    }
+
+    // Scroll vers la section
     document.querySelector(this.getAttribute("href")).scrollIntoView({
       behavior: "smooth",
     });
