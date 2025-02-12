@@ -71,36 +71,6 @@ function initScrollAnimations() {
   elements.forEach((el) => observer.observe(el));
 }
 
-// Fonction pour gérer la transition entre les sections
-function handleSectionTransitions() {
-  const sections = document.querySelectorAll("section");
-  let currentSection = 0;
-  let isMobile = window.innerWidth <= 991.98;
-
-  window.addEventListener("resize", () => {
-    isMobile = window.innerWidth <= 991.98;
-  });
-
-  window.addEventListener("scroll", () => {
-    if (isMobile) return; // Désactive l'effet sur mobile
-
-    sections.forEach((section, index) => {
-      const rect = section.getBoundingClientRect();
-      const viewHeight = Math.max(
-        document.documentElement.clientHeight,
-        window.innerHeight
-      );
-
-      if (rect.top >= -viewHeight / 2 && rect.top <= viewHeight / 2) {
-        section.style.opacity = "1";
-        currentSection = index;
-      } else {
-        section.style.opacity = "0.7";
-      }
-    });
-  });
-}
-
 // Ajouter la classe fade-in aux éléments à animer
 function addFadeInClass() {
   const elementsToAnimate = document.querySelectorAll(
@@ -323,7 +293,6 @@ document.addEventListener("DOMContentLoaded", () => {
   createGridPoints();
   addFadeInClass();
   initScrollAnimations();
-  handleSectionTransitions();
   initProjectCarousel();
   initProjectCardFlip();
 });

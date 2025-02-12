@@ -287,15 +287,26 @@ h6 {
   color: var(--text-color);
 }
 
-.contact-info-item p,
-.contact-info-item a {
+.contact-info-item p {
   color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.contact-info-item p:last-child {
+  margin-bottom: 0;
+}
+
+.contact-info-item a {
+  color: var(--primary-color);
   text-decoration: none;
   transition: color 0.3s ease;
+  font-weight: 500;
 }
 
 .contact-info-item a:hover {
-  color: var(--primary-color);
+  color: var(--secondary-color);
 }
 
 .form-group.valid .form-control {
