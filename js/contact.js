@@ -75,6 +75,11 @@ function initContactForm() {
         submitBtn.classList.replace("btn-primary", "btn-success");
         contactForm.reset();
 
+        // Supprimer les classes de validation après réinitialisation
+        document.querySelectorAll(".form-group").forEach((group) => {
+          group.classList.remove("valid", "invalid");
+        });
+
         setTimeout(() => {
           submitBtn.innerHTML = originalText;
           submitBtn.classList.replace("btn-success", "btn-primary");

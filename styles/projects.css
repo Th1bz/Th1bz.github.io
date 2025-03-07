@@ -1,11 +1,19 @@
-/* Section Projets */
+/**
+ * STYLES DU CARROUSEL DE PROJETS
+ * Ce fichier contient les styles pour la section projets et son carrousel
+ */
+
+/**
+ * 1. CONTENEUR PRINCIPAL DE LA SECTION
+ * Styles pour le fond et la structure de base de la section
+ */
 .projects {
   background: linear-gradient(135deg, rgba(15, 15, 35, 0.95), var(--bg-color));
   position: relative;
   overflow: hidden;
 }
 
-/* Ajout d'un effet de lumière subtil */
+/* Effet de lumière décoratif en haut de la section */
 .projects::before {
   content: "";
   position: absolute;
@@ -21,7 +29,36 @@
   pointer-events: none;
 }
 
-/* Conteneur principal du carrousel */
+/* Instructions pour l'utilisateur */
+.project-instruction {
+  color: var(--text-color);
+  opacity: 0.8;
+  font-size: 0.9rem;
+  font-family: var(--font-mono);
+  animation: pulse 2s infinite;
+}
+
+.project-instruction i {
+  color: var(--primary-color);
+}
+
+/* Animation pulsante pour attirer l'attention */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/**
+ * 2. STRUCTURE DU CARROUSEL
+ * Organisation des conteneurs principaux du carrousel
+ */
 .project-carousel {
   position: relative;
   height: 600px;
@@ -29,7 +66,6 @@
   max-width: 1200px;
 }
 
-/* Conteneur des cartes */
 .carousel-container {
   position: relative;
   width: 100%;
@@ -39,7 +75,12 @@
   align-items: center;
 }
 
-/* Carte de projet */
+/**
+ * 3. CARTES DE PROJETS
+ * Styles pour les différents états des cartes (normal, active, précédente, suivante)
+ */
+
+/* État de base d'une carte (non visible) */
 .project-card {
   position: absolute;
   width: 100%;
@@ -51,7 +92,7 @@
   transform: translateX(100%);
 }
 
-/* Carte active (visible) */
+/* Carte active (visible au centre) */
 .project-card.active {
   opacity: 1;
   visibility: visible;
@@ -59,7 +100,7 @@
   z-index: 3;
 }
 
-/* Carte précédente */
+/* Carte précédente (visible à gauche) */
 .project-card.prev {
   opacity: 0.3;
   visibility: visible;
@@ -69,7 +110,7 @@
   z-index: 2;
 }
 
-/* Carte suivante */
+/* Carte suivante (visible à droite) */
 .project-card.next {
   opacity: 0.3;
   visibility: visible;
@@ -79,28 +120,33 @@
   z-index: 2;
 }
 
-/* Contenu de la carte (pour l'effet de flip) */
+/**
+ * 4. CONTENU DES CARTES
+ * Styles pour l'effet de retournement et les faces des cartes
+ */
+
+/* Conteneur avec effet 3D pour le retournement */
 .project-content {
   position: relative;
   width: 100%;
   height: 100%;
-  transform-style: preserve-3d;
+  transform-style: preserve-3d; /* Permet l'effet 3D */
   transition: transform 0.6s ease;
   cursor: pointer;
 }
 
-/* Image du projet */
+/* Face avant (image du projet) */
 .project-content img {
   position: absolute;
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 20px;
-  backface-visibility: hidden;
+  backface-visibility: hidden; /* Cache l'arrière de l'élément */
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
 }
 
-/* Informations du projet (face arrière) */
+/* Face arrière (informations du projet) */
 .project-info {
   position: absolute;
   width: 100%;
@@ -112,7 +158,7 @@
     rgba(10, 10, 31, 0.9)
   );
   border-radius: 20px;
-  transform: rotateY(180deg);
+  transform: rotateY(180deg); /* Rotation initiale */
   backface-visibility: hidden;
   display: flex;
   flex-direction: column;
@@ -122,12 +168,12 @@
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
 }
 
-/* Animation de flip pour la carte active */
+/* Animation de retournement pour la carte active */
 .project-card.active .project-content.flipped {
   transform: rotateY(180deg);
 }
 
-/* Technologies utilisées */
+/* Badges des technologies utilisées */
 .project-tech {
   display: flex;
   gap: 0.8rem;
@@ -140,12 +186,17 @@
   padding: 0.5rem 1rem;
   background: rgba(0, 255, 245, 0.1);
   border: 1px solid rgba(0, 255, 245, 0.2);
-  transform: skew(-15deg);
+  transform: skew(-15deg); /* Effet incliné */
   font-size: 0.9rem;
   color: var(--primary-color);
 }
 
-/* Contrôles du carrousel */
+/**
+ * 5. CONTRÔLES DU CARROUSEL
+ * Styles pour les boutons de navigation et les indicateurs
+ */
+
+/* Conteneur principal des contrôles */
 .carousel-controls {
   position: absolute;
   bottom: 2rem;
@@ -158,7 +209,7 @@
   z-index: 10;
 }
 
-/* Conteneur des boutons de navigation */
+/* Boutons précédent/suivant */
 .navigation-buttons {
   display: flex;
   gap: 2rem;
@@ -184,7 +235,7 @@
   transform: scale(0.95);
 }
 
-/* Indicateurs de position */
+/* Indicateurs de position (points) */
 .carousel-indicators {
   display: flex;
   gap: 0.8rem;
@@ -204,43 +255,25 @@
 .carousel-indicator.active {
   background-color: var(--primary-color);
   transform: scale(1.2);
-  box-shadow: 0 0 8px var(--primary-color);
+  box-shadow: 0 0 8px var(--primary-color); /* Effet de lueur */
 }
 
-.project-instruction {
-  color: var(--text-color);
-  opacity: 0.8;
-  font-size: 0.9rem;
-  font-family: var(--font-mono);
-  animation: pulse 2s infinite;
-}
-
-.project-instruction i {
-  color: var(--primary-color);
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-/* Responsive */
+/**
+ * 6. RESPONSIVE
+ * Adaptations pour les écrans mobiles et tablettes
+ */
 @media (max-width: 768px) {
+  /* Ajustement de la hauteur */
   .project-carousel {
     height: 500px;
   }
 
+  /* Réduction de la taille des cartes */
   .project-card {
     height: 350px;
   }
 
+  /* Masquage des cartes latérales sur petit écran */
   .project-card.prev,
   .project-card.next {
     display: none;
