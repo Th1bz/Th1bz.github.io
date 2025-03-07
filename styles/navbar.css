@@ -3,6 +3,12 @@
   padding: 1.2rem 0;
   z-index: 1000;
   transition: all 0.3s ease;
+  transform: translateY(0);
+}
+
+/* Classe pour cacher la navbar */
+.navbar.hide {
+  transform: translateY(-100%);
 }
 
 /* Style du logo avec animation mais sans changement au hover */
