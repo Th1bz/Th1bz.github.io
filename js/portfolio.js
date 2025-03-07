@@ -221,11 +221,64 @@ function setupModalDetails() {
   document.addEventListener("click", function (e) {
     if (e.target.closest(".view-details")) {
       e.preventDefault();
-      const projectId = e.target
-        .closest(".view-details")
-        .getAttribute("data-id");
-      showProjectDetails(projectId);
+      const detailsButton = e.target.closest(".view-details");
+      const projectId = detailsButton.getAttribute("data-id");
+      console.log("Bouton de détails cliqué pour le projet ID:", projectId);
+
+      if (projectId) {
+        showProjectDetails(projectId);
+      } else {
+        console.error(
+          "Impossible de trouver l'ID du projet dans le bouton de détails"
+        );
+      }
     }
+  });
+
+  // Listener pour fermer la modal au clic à l'extérieur
+  document.addEventListener("click", function (e) {
+    const modal = document.getElementById("projectModal");
+    const modalDialog = modal?.querySelector(".modal-dialog");
+
+    // Vérifier si la modal est ouverte et si le clic est en dehors de la modal
+    if (
+      modal &&
+      modal.classList.contains("show") &&
+      modalDialog &&
+      !modalDialog.contains(e.target)
+    ) {
+      // S'assurer que le clic n'est pas sur un élément à l'intérieur de la modal,
+      // ni sur un lien, ni sur le bouton d'ouverture
+      if (
+        !e.target.closest(".modal-content") &&
+        !e.target.closest(".view-details") &&
+        !e.target.closest("a") &&
+        e.target.tagName.toLowerCase() !== "a"
+      ) {
+        closeProjectModal();
+      }
+    }
+  });
+
+  // Listener pour fermer la modal au scroll
+  let scrollTimeout;
+  window.addEventListener("scroll", function () {
+    if (scrollTimeout) {
+      clearTimeout(scrollTimeout);
+    }
+
+    scrollTimeout = setTimeout(function () {
+      const modal = document.getElementById("projectModal");
+      // Ne pas fermer la modal si l'utilisateur interagit avec un lien ou un bouton
+      if (
+        modal &&
+        modal.classList.contains("show") &&
+        document.activeElement.tagName.toLowerCase() !== "a" &&
+        document.activeElement.tagName.toLowerCase() !== "button"
+      ) {
+        closeProjectModal();
+      }
+    }, 150); // Délai court pour éviter de fermer immédiatement au petit scroll
   });
 }
 
@@ -236,7 +289,15 @@ function setupModalDetails() {
 async function showProjectDetails(projectId) {
   try {
     const projects = await loadProjects();
-    const project = projects.find((p) => p.id === projectId);
+    console.log("Type de projectId:", typeof projectId, "Valeur:", projectId);
+    console.log(
+      "Projets disponibles:",
+      projects.map((p) => `ID ${p.id} (${typeof p.id})`).join(", ")
+    );
+
+    // Convertir l'ID en nombre pour la comparaison (car il vient d'un attribut HTML)
+    const numericProjectId = parseInt(projectId, 10);
+    const project = projects.find((p) => p.id === numericProjectId);
 
     if (!project) {
       throw new Error(`Projet avec ID ${projectId} non trouvé`);
@@ -266,10 +327,19 @@ async function showProjectDetails(projectId) {
       .map((tech) => `<span>${tech}</span>`)
       .join("");
 
-    // Liens
-    if (project.url) {
+    // Liens - Corriger et mettre à jour les liens
+    if (project.url && project.status !== "disabled") {
       modalLiveLink.href = project.url;
       modalLiveLink.style.display = "inline-block";
+      modalLiveLink.target = "_blank"; // S'assurer que le lien s'ouvre dans un nouvel onglet
+      modalLiveLink.rel = "noopener noreferrer"; // Sécurité pour les liens externes
+
+      // Retirer les écouteurs d'événements existants qui pourraient interférer
+      const newLiveLink = modalLiveLink.cloneNode(true);
+      modalLiveLink.parentNode.replaceChild(newLiveLink, modalLiveLink);
+
+      // S'assurer que le lien est actif
+      console.log("Lien live configuré:", project.url);
     } else {
       modalLiveLink.style.display = "none";
     }
@@ -277,6 +347,15 @@ async function showProjectDetails(projectId) {
     if (project.github) {
       modalCodeLink.href = project.github;
       modalCodeLink.style.display = "inline-block";
+      modalCodeLink.target = "_blank";
+      modalCodeLink.rel = "noopener noreferrer";
+
+      // Retirer les écouteurs d'événements existants qui pourraient interférer
+      const newCodeLink = modalCodeLink.cloneNode(true);
+      modalCodeLink.parentNode.replaceChild(newCodeLink, modalCodeLink);
+
+      // S'assurer que le lien est actif
+      console.log("Lien GitHub configuré:", project.github);
     } else {
       modalCodeLink.style.display = "none";
     }
@@ -284,11 +363,84 @@ async function showProjectDetails(projectId) {
     // Galerie d'images
     modalGallery.innerHTML = `<img src="${project.image}" class="img-fluid w-100" alt="${project.title}">`;
 
-    // Afficher la modal
-    const modalInstance = new bootstrap.Modal(modal);
+    // Supprimer le backdrop existant s'il existe
+    document.querySelectorAll(".modal-backdrop").forEach((el) => el.remove());
+
+    // Afficher la modal avec backdrop static (ne ferme pas au clic extérieur)
+    const modalInstance = new bootstrap.Modal(modal, {
+      backdrop: false,
+      keyboard: true,
+      focus: true,
+    });
+
+    // Si la modal est déjà ouverte, la fermer d'abord
+    if (modal.classList.contains("show")) {
+      const oldModal = bootstrap.Modal.getInstance(modal);
+      if (oldModal) oldModal.hide();
+    }
+
     modalInstance.show();
+
+    // Nettoyer les classes ajoutées par Bootstrap
+    document.body.classList.remove("modal-open");
+    document.body.style.overflow = "";
+    document.body.style.paddingRight = "";
+
+    // Ajouter des gestionnaires d'événements pour les liens
+    addLinkEventHandlers();
   } catch (error) {
     console.error("Erreur lors de l'affichage des détails du projet:", error);
+  }
+}
+
+/**
+ * Ajoute des gestionnaires d'événements pour les liens dans la modal
+ * afin de s'assurer qu'ils fonctionnent correctement
+ */
+function addLinkEventHandlers() {
+  // Récupérer tous les liens dans la modal
+  const modal = document.getElementById("projectModal");
+  const links = modal.querySelectorAll("a[href]");
+
+  links.forEach((link) => {
+    // Retirer les écouteurs d'événements existants
+    const newLink = link.cloneNode(true);
+    link.parentNode.replaceChild(newLink, link);
+
+    // Ajouter le nouvel écouteur d'événements
+    newLink.addEventListener("click", function (event) {
+      // Empêcher la propagation de l'événement pour éviter
+      // que d'autres gestionnaires n'interfèrent
+      event.stopPropagation();
+
+      // Si c'est un lien externe (commence par http ou https)
+      if (this.href.startsWith("http")) {
+        // Permet l'ouverture normale du lien dans un nouvel onglet
+        console.log("Lien externe cliqué:", this.href);
+        return true;
+      }
+    });
+  });
+}
+
+/**
+ * Ferme la modal de projet
+ */
+function closeProjectModal() {
+  const modal = document.getElementById("projectModal");
+  if (modal) {
+    const modalInstance = bootstrap.Modal.getInstance(modal);
+    if (modalInstance) {
+      modalInstance.hide();
+    }
+
+    // Nettoyer les classes et styles ajoutés par Bootstrap
+    setTimeout(() => {
+      document.querySelectorAll(".modal-backdrop").forEach((el) => el.remove());
+      document.body.classList.remove("modal-open");
+      document.body.style.overflow = "";
+      document.body.style.paddingRight = "";
+    }, 300);
   }
 }
 
