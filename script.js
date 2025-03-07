@@ -158,8 +158,10 @@ document.addEventListener("DOMContentLoaded", () => {
   initScrollAnimations();
 
   // Initialisation des projets
-  initProjectCarousel();
-  initProjectCardFlip();
+  (async () => {
+    await initProjectCarousel();
+    initProjectCardFlip();
+  })();
 
   // Initialisation du formulaire
   initContactForm();
