@@ -283,7 +283,7 @@
 
         <div class="project-carousel">
           <div class="carousel-container">
-            <div class="project-card" data-position="0">
+            <div class="project-card active">
               <div class="project-content">
                 <img
                   src="assets/images/ProjetArcadia.png"
@@ -312,7 +312,7 @@
               </div>
             </div>
 
-            <div class="project-card" data-position="1">
+            <div class="project-card next">
               <div class="project-content">
                 <img
                   src="assets/images/ProjetCheckIt.png"
@@ -335,13 +335,14 @@
                     class="btn btn-primary mt-3"
                     target="_blank"
                     rel="noopener noreferrer"
+                    disabled
                     >Voir le projet</a
                   >
                 </div>
               </div>
             </div>
 
-            <div class="project-card" data-position="2">
+            <div class="project-card">
               <div class="project-content">
                 <img
                   src="assets/images/HomeCalculatrice.png"
@@ -369,15 +370,47 @@
                 </div>
               </div>
             </div>
+
+            <div class="project-card prev">
+              <div class="project-content">
+                <img
+                  src="assets/images/Screen_Template-V1.png"
+                  alt="Projet 4"
+                  loading="lazy"
+                />
+                <div class="project-info">
+                  <h3>Template Site Vitrine</h3>
+                  <p>
+                    Développement d'un template de site vitrine personnalisable
+                    simple et responsive.
+                  </p>
+                  <div class="project-tech">
+                    <span>HTML5</span>
+                    <span>CSS3</span>
+                    <span>JavaScript</span>
+                  </div>
+                  <a
+                    href="https://th1bz.github.io/Template-V1/"
+                    class="btn btn-primary mt-3"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Voir le projet</a
+                  >
+                </div>
+              </div>
+            </div>
           </div>
 
           <div class="carousel-controls">
-            <button class="control-prev">
-              <i class="fas fa-chevron-left"></i>
-            </button>
-            <button class="control-next">
-              <i class="fas fa-chevron-right"></i>
-            </button>
+            <div class="navigation-buttons">
+              <button class="control-prev">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <button class="control-next">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+            </div>
+            <!-- Les indicateurs sont insérés ici par JavaScript -->
           </div>
         </div>
       </div>

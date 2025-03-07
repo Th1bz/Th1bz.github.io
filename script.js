@@ -118,58 +118,144 @@ function createGridPoints() {
 // --------------------------------------------------------------------------
 // Gestion du carrousel de projets
 function initProjectCarousel() {
-  const container = document.querySelector(".carousel-container");
   const cards = document.querySelectorAll(".project-card");
   const prevBtn = document.querySelector(".control-prev");
   const nextBtn = document.querySelector(".control-next");
 
-  let currentPosition = 0;
+  // Nombre total de cartes
   const totalCards = cards.length;
 
-  function updateCarousel() {
-    cards.forEach((card, index) => {
-      let position = (index - currentPosition + totalCards) % totalCards;
-      card.dataset.position = position;
+  // Variable pour suivre l'index actuel
+  let currentIndex = 0;
 
-      // Réinitialiser le flip de toutes les cartes
-      const content = card.querySelector(".project-content");
-      if (content) {
-        content.classList.remove("flipped");
-      }
+  // Variable pour empêcher les clics rapides
+  let isAnimating = false;
+
+  // Fonction pour créer les indicateurs
+  function createIndicators() {
+    const indicatorsContainer = document.createElement("div");
+    indicatorsContainer.className = "carousel-indicators";
+
+    for (let i = 0; i < totalCards; i++) {
+      const indicator = document.createElement("div");
+      indicator.className = "carousel-indicator";
+      if (i === currentIndex) indicator.classList.add("active");
+
+      indicator.addEventListener("click", () => {
+        if (!isAnimating && i !== currentIndex) {
+          goToSlide(i);
+        }
+      });
+
+      indicatorsContainer.appendChild(indicator);
+    }
+
+    // Ajouter les indicateurs dans le conteneur des contrôles
+    const carouselControls = document.querySelector(".carousel-controls");
+    carouselControls.appendChild(indicatorsContainer);
+  }
+
+  // Fonction pour mettre à jour les indicateurs
+  function updateIndicators() {
+    const indicators = document.querySelectorAll(".carousel-indicator");
+    indicators.forEach((indicator, index) => {
+      indicator.classList.toggle("active", index === currentIndex);
     });
   }
 
-  function moveNext() {
-    currentPosition = (currentPosition + 1) % totalCards;
-    updateCarousel();
+  // Fonction pour aller à une diapositive spécifique
+  function goToSlide(index) {
+    if (isAnimating) return;
+    isAnimating = true;
+
+    // Calculer les nouveaux indices
+    const prevIndex = (index - 1 + totalCards) % totalCards;
+    const nextIndex = (index + 1) % totalCards;
+
+    // Supprimer toutes les classes
+    cards.forEach((card) => {
+      card.classList.remove("active", "prev", "next");
+    });
+
+    // Appliquer les nouvelles classes
+    cards[index].classList.add("active");
+    cards[prevIndex].classList.add("prev");
+    cards[nextIndex].classList.add("next");
+
+    // Mettre à jour l'index actuel
+    currentIndex = index;
+
+    // Mettre à jour les indicateurs
+    updateIndicators();
+
+    // Réinitialiser le flip si nécessaire
+    cards.forEach((card) => {
+      const content = card.querySelector(".project-content");
+      if (content && content.classList.contains("flipped")) {
+        content.classList.remove("flipped");
+      }
+    });
+
+    // Réactiver les animations après leur fin
+    setTimeout(() => {
+      isAnimating = false;
+    }, 500);
   }
 
-  function movePrev() {
-    currentPosition = (currentPosition - 1 + totalCards) % totalCards;
-    updateCarousel();
+  // Fonction pour aller à la diapositive suivante
+  function goToNext() {
+    goToSlide((currentIndex + 1) % totalCards);
   }
 
-  // Event listeners
-  nextBtn.addEventListener("click", moveNext);
-  prevBtn.addEventListener("click", movePrev);
+  // Fonction pour aller à la diapositive précédente
+  function goToPrev() {
+    goToSlide((currentIndex - 1 + totalCards) % totalCards);
+  }
 
-  // Swipe support for mobile
+  // Ajouter les écouteurs d'événements
+  nextBtn.addEventListener("click", goToNext);
+  prevBtn.addEventListener("click", goToPrev);
+
+  // Support du swipe sur mobile
   let touchStartX = 0;
-  let touchEndX = 0;
+  const container = document.querySelector(".carousel-container");
 
   container.addEventListener("touchstart", (e) => {
     touchStartX = e.changedTouches[0].screenX;
   });
 
   container.addEventListener("touchend", (e) => {
-    touchEndX = e.changedTouches[0].screenX;
-    if (touchEndX < touchStartX) moveNext();
-    if (touchEndX > touchStartX) movePrev();
-  });
-}
-// --------------------------------------------------------------------------
+    const touchEndX = e.changedTouches[0].screenX;
+    const diff = touchStartX - touchEndX;
 
-// --------------------------------------------------------------------------
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        goToNext();
+      } else {
+        goToPrev();
+      }
+    }
+  });
+
+  // Navigation au clavier
+  document.addEventListener("keydown", (e) => {
+    if (
+      container.closest("section").getBoundingClientRect().top <
+        window.innerHeight &&
+      container.closest("section").getBoundingClientRect().bottom > 0
+    ) {
+      if (e.key === "ArrowRight") goToNext();
+      if (e.key === "ArrowLeft") goToPrev();
+    }
+  });
+
+  // Créer les indicateurs de position
+  createIndicators();
+
+  // Initialisation - s'assurer que les classes sont correctement définies
+  goToSlide(currentIndex);
+}
+
 // Gestion du flip des cartes projets
 function initProjectCardFlip() {
   const cards = document.querySelectorAll(".project-card");
@@ -178,8 +264,8 @@ function initProjectCardFlip() {
     const projectContent = card.querySelector(".project-content");
     if (projectContent) {
       projectContent.addEventListener("click", () => {
-        // Vérifier si la carte est active (position 0)
-        if (card.dataset.position === "0") {
+        // Vérifier si la carte est active
+        if (card.classList.contains("active")) {
           projectContent.classList.toggle("flipped");
         }
       });
