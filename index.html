@@ -73,6 +73,9 @@
               <a class="nav-link" href="#projets">Projets</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="#portfolio">Portfolio</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="#tarifs">Tarifs</a>
             </li>
             <li class="nav-item">
@@ -99,6 +102,9 @@
             <div class="cta-buttons">
               <a href="#projets" class="btn btn-primary me-3">
                 <span>Voir mes projets</span>
+              </a>
+              <a href="#portfolio" class="btn btn-outline-primary me-3">
+                <span>Portfolio</span>
               </a>
               <a href="#contact" class="btn btn-outline-primary">
                 <span>Me contacter</span>
@@ -296,6 +302,149 @@
               </button>
             </div>
             <!-- Les indicateurs sont insérés ici par JavaScript -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Portfolio Détaillé -->
+    <section id="portfolio" class="portfolio min-vh-100 py-5">
+      <div class="container">
+        <h2 class="section-title text-center mb-5">Portfolio Détaillé</h2>
+
+        <!-- Filtres de catégories -->
+        <div class="portfolio-filters text-center mb-5">
+          <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">Tous</button>
+            <button class="filter-btn" data-filter="web">Sites Web</button>
+            <button class="filter-btn" data-filter="app">Applications</button>
+            <button class="filter-btn" data-filter="ecommerce">
+              E-commerce
+            </button>
+            <button class="filter-btn" data-filter="design">
+              Design UI/UX
+            </button>
+          </div>
+        </div>
+
+        <!-- Grille de projets filtrables -->
+        <div class="portfolio-grid">
+          <div class="row g-4" id="portfolio-items">
+            <!-- Les éléments du portfolio seront générés dynamiquement par JavaScript -->
+            <!-- Voici un exemple de structure pour chaque élément -->
+            <div class="col-md-6 col-lg-4 portfolio-item" data-category="web">
+              <div class="portfolio-card">
+                <div class="portfolio-img">
+                  <img
+                    src="assets/projects/placeholder.jpg"
+                    alt="Projet exemple"
+                    class="img-fluid"
+                  />
+                  <div class="portfolio-overlay">
+                    <div class="portfolio-buttons">
+                      <a href="#" class="view-details"
+                        ><i class="fas fa-eye"></i
+                      ></a>
+                      <a href="#" target="_blank" class="view-live"
+                        ><i class="fas fa-external-link-alt"></i
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="portfolio-info">
+                  <h4 class="portfolio-title">Titre du projet</h4>
+                  <p class="portfolio-category">Catégorie</p>
+                  <div class="portfolio-tech">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JS</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="portfolio-pagination text-center mt-5">
+          <button class="pagination-btn" id="load-more">
+            <span>Voir plus</span> <i class="fas fa-arrow-down"></i>
+          </button>
+        </div>
+
+        <!-- Modal de détails du projet -->
+        <div
+          class="modal fade"
+          id="projectModal"
+          tabindex="-1"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Détails du projet</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Fermer"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+                  <div class="col-lg-8">
+                    <div class="project-gallery">
+                      <!-- Galerie d'images à insérer dynamiquement -->
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="project-details">
+                      <h3 class="project-title">Titre du projet</h3>
+                      <div class="project-meta">
+                        <p>
+                          <strong>Catégorie:</strong>
+                          <span class="project-category">Web</span>
+                        </p>
+                        <p>
+                          <strong>Client:</strong>
+                          <span class="project-client">Nom du client</span>
+                        </p>
+                        <p>
+                          <strong>Date:</strong>
+                          <span class="project-date">Janvier 2024</span>
+                        </p>
+                      </div>
+                      <div class="project-description">
+                        <!-- Description du projet -->
+                      </div>
+                      <div class="project-tech-stack">
+                        <h5>Technologies utilisées</h5>
+                        <div class="tech-tags">
+                          <!-- Tags des technologies -->
+                        </div>
+                      </div>
+                      <div class="project-links mt-4">
+                        <a
+                          href="#"
+                          class="btn btn-primary me-2 project-live-link"
+                          target="_blank"
+                        >
+                          <i class="fas fa-external-link-alt me-2"></i>Voir le
+                          site
+                        </a>
+                        <a
+                          href="#"
+                          class="btn btn-outline-primary project-code-link"
+                          target="_blank"
+                        >
+                          <i class="fab fa-github me-2"></i>Voir le code
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -649,6 +798,7 @@
               <li><a href="#accueil">Accueil</a></li>
               <li><a href="#about">À propos</a></li>
               <li><a href="#projets">Projets</a></li>
+              <li><a href="#portfolio">Portfolio</a></li>
               <li><a href="#tarifs">Tarifs</a></li>
               <li><a href="#contact">Contact</a></li>
             </ul>

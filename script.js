@@ -6,6 +6,7 @@
 // Import des modules externes
 import { initContactForm } from "./js/contact.js";
 import { initProjectCarousel, initProjectCardFlip } from "./js/carrousel.js";
+import { initPortfolio } from "./js/portfolio.js";
 
 let lastScrollTop = 0;
 const navbar = document.querySelector(".navbar");
@@ -159,8 +160,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initialisation des projets
   (async () => {
-    await initProjectCarousel();
-    initProjectCardFlip();
+    try {
+      console.log("Démarrage de l'initialisation des modules...");
+      await initProjectCarousel();
+      initProjectCardFlip();
+      await initPortfolio(); // Initialisation de la section portfolio détaillé
+      console.log("Tous les modules ont été initialisés avec succès");
+    } catch (error) {
+      console.error("Erreur lors de l'initialisation des modules:", error);
+    }
   })();
 
   // Initialisation du formulaire

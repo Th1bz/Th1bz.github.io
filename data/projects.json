@@ -7,7 +7,10 @@
     "technologies": ["Symfony", "SQL & NoSQL", "API REST"],
     "url": "https://th1bz-arcadia.alwaysdata.net/",
     "status": "active",
-    "category": "application"
+    "category": "app",
+    "client": "Projet d'étude",
+    "date": "Décembre 2024",
+    "fullDescription": "Application web complète destinée aux visiteurs et aux employés du zoo Arcadia. Ce projet comprend une partie publique pour la consultation des animaux et des spectacles, ainsi qu'une interface administrateur pour la gestion du zoo."
   },
   {
     "id": 2,
@@ -17,7 +20,10 @@
     "technologies": ["PHP", "MySQL", "Bootstrap"],
     "url": "#",
     "status": "disabled",
-    "category": "application"
+    "category": "app",
+    "client": "Projet personnel",
+    "date": "Novembre 2024",
+    "fullDescription": "Application de gestion de tâches qui permet aux utilisateurs de créer, organiser et suivre leurs tâches quotidiennes. Fonctionnalités de listes, catégories et priorités."
   },
   {
     "id": 3,
@@ -27,7 +33,10 @@
     "technologies": ["Vite.js", "React", "Tailwind CSS"],
     "url": "https://th1bz.github.io/Calculatrice-React-et-Tailwindcss/",
     "status": "active",
-    "category": "application"
+    "category": "app",
+    "client": "Projet personnel",
+    "date": "Janvier 2025",
+    "fullDescription": "Calculatrice interactive développée avec les technologies modernes React et Tailwind CSS, offrant une interface utilisateur élégante et réactive."
   },
   {
     "id": 4,
@@ -37,16 +46,9 @@
     "technologies": ["HTML5", "CSS3", "JavaScript"],
     "url": "https://th1bz.github.io/Template-V1/",
     "status": "active",
-    "category": "template"
-  },
-  {
-    "id": 5,
-    "title": "Template Site Vitrine 2",
-    "description": "Développement d'un template de site vitrine personnalisable simple et responsive.",
-    "image": "assets/images/Screen_Template-V1.png",
-    "technologies": ["HTML5", "CSS3", "JavaScript"],
-    "url": "https://th1bz.github.io/Template-V1/",
-    "status": "active",
-    "category": "template"
+    "category": "web",
+    "client": "Ressource libre",
+    "date": "Février 2025",
+    "fullDescription": "Template de site vitrine responsive et moderne, conçu pour être facilement personnalisable et adapté aux besoins des petites entreprises et professionnels."
   }
 ]
