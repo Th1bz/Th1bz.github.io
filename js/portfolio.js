@@ -152,6 +152,20 @@ function setupFilterButtons() {
 function filterProjects(category) {
   const portfolioItems = document.querySelectorAll(".portfolio-item");
   let visibleCount = 0;
+  const portfolioSection = document.getElementById("portfolio");
+
+  // Si la catégorie est "none", on cache tous les projets et on réduit la hauteur
+  if (category === "none") {
+    portfolioItems.forEach((item) => item.classList.add("hidden"));
+    portfolioSection.classList.add("reduced-height");
+    // Masquer le bouton "Voir plus"
+    const loadMoreBtn = document.getElementById("load-more");
+    loadMoreBtn.style.display = "none";
+    return;
+  }
+
+  // Pour les autres catégories, restaurer la hauteur normale
+  portfolioSection.classList.remove("reduced-height");
 
   portfolioItems.forEach((item) => {
     const itemCategory = item.getAttribute("data-category");

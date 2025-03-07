@@ -3,6 +3,12 @@
   background: linear-gradient(135deg, var(--bg-color), rgba(15, 15, 35, 0.95));
   position: relative;
   z-index: 1;
+  transition: min-height 0.5s ease;
+}
+
+/* Style pour la hauteur réduite quand aucun projet n'est affiché */
+.portfolio.reduced-height {
+  min-height: 300px !important;
 }
 
 /* Filtres de catégories */
