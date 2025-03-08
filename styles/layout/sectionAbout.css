@@ -14,16 +14,6 @@
   position: relative;
 }
 
-.section-title::after {
-  content: "";
-  position: absolute;
-  bottom: -10px;
-  left: 0;
-  width: 60px;
-  height: 4px;
-  background: var(--primary-color);
-}
-
 .about-text {
   font-size: 1.1rem;
   line-height: 1.8;

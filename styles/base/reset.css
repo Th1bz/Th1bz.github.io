@@ -1,0 +1,35 @@
+/* Reset et normalisation */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Styles de base pour le body */
+body {
+  font-family: var(--font-main);
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  overflow-x: hidden;
+  line-height: 1.6;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  overflow-y: auto;
+}
+
+/* Cacher la scrollbar tout en gardant le scroll fonctionnel */
+/* Pour Webkit (Chrome, Safari, etc.) */
+::-webkit-scrollbar {
+  width: 0;
+  display: none;
+}
+
+/* Pour Firefox */
+* {
+  scrollbar-width: none;
+}
+
+/* Pour IE/Edge */
+* {
+  -ms-overflow-style: none;
+}

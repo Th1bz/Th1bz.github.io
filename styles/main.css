@@ -1,0 +1,27 @@
+/* Styles Dossier base */
+/* Pour les variables et fondamentaux */
+@import "./base/typography.css";
+@import "./base/variables.css";
+@import "./base/reset.css";
+
+/* Styles Dossier components */
+/* Pour les éléments réutilisables */
+@import "./components/hero-background.css";
+@import "./components/hero.css";
+@import "./components/navbar.css";
+@import "./components/buttons.css";
+@import "./components/contact-form.css";
+@import "./components/contact-info.css";
+
+/* Styles Dossier layout */
+/* Pour les sections de pages */
+@import "./layout/footer.css";
+@import "./layout/portfolio.css";
+@import "./layout/pricing.css";
+@import "./layout/projects.css";
+@import "./layout/sectionAbout.css";
+@import "./layout/contact.css";
+
+/* Styles Dossier utils */
+/* Pour les animations et utilitaires */
+@import "./utils/animations.css";

@@ -9,7 +9,7 @@
   }
 }
 
-/* Animations */
+/* Animation de float */
 @keyframes float {
   0% {
     transform: translateY(0);
@@ -22,6 +22,7 @@
   }
 }
 
+/* Animation de fadeInUp */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -33,6 +34,7 @@
   }
 }
 
+/* Animation de glitch */
 @keyframes glitch {
   2%,
   64% {

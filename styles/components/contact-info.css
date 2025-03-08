@@ -1,0 +1,55 @@
+/* Styles pour les informations de contact */
+.contact-info {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.contact-info-item {
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.contact-info-item:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.contact-info-item i {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.contact-info-item h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.contact-info-item p {
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.contact-info-item p:last-child {
+  margin-bottom: 0;
+}
+
+.contact-info-item a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: 500;
+}
+
+.contact-info-item a:hover {
+  color: var(--secondary-color);
+}
