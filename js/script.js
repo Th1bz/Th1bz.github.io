@@ -4,9 +4,9 @@
  */
 
 // Import des modules externes
-import { initContactForm } from "./js/contact.js";
-import { initProjectCarousel, initProjectCardFlip } from "./js/carrousel.js";
-import { initPortfolio } from "./js/portfolio.js";
+import { initContactForm } from "./contact.js";
+import { initProjectCarousel, initProjectCardFlip } from "./carrousel.js";
+import { initPortfolio } from "./portfolio.js";
 
 let lastScrollTop = 0;
 const navbar = document.querySelector(".navbar");
@@ -99,38 +99,21 @@ function addFadeInClass() {
 
 /**
  * SECTION 3: Animation de l'Hero Section
- * Création et gestion de la grille de points lumineux
+ * Création de la grille  cyberpunk
  */
 
-function createGridPoints() {
+function createGrid() {
   const heroSection = document.querySelector(".hero");
-  const gridPoints = document.createElement("div");
-  gridPoints.className = "grid-points";
 
   // Structure de la grille
   const gridBackground = document.createElement("div");
   gridBackground.className = "hero-background";
   const grid = document.createElement("div");
   grid.className = "grid";
-  const gridOverlay = document.createElement("div");
-  gridOverlay.className = "grid-overlay";
 
   // Assemblage des éléments
   gridBackground.appendChild(grid);
-  gridBackground.appendChild(gridOverlay);
   heroSection.insertBefore(gridBackground, heroSection.firstChild);
-
-  // Création des points animés
-  for (let i = 0; i < 20; i++) {
-    const point = document.createElement("div");
-    point.className = "point";
-    point.style.left = Math.random() * 100 + "%";
-    point.style.top = Math.random() * 100 + "%";
-    point.style.animationDelay = Math.random() * 3 + "s";
-    gridPoints.appendChild(point);
-  }
-
-  gridBackground.appendChild(gridPoints);
 }
 
 /**
@@ -154,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initSmoothScroll();
 
   // Initialisation des animations
-  createGridPoints();
+  createGrid();
   addFadeInClass();
   initScrollAnimations();
 

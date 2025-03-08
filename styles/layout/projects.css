@@ -42,19 +42,6 @@
   color: var(--primary-color);
 }
 
-/* Animation pulsante pour attirer l'attention */
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
 /**
  * 2. STRUCTURE DU CARROUSEL
  * Organisation des conteneurs principaux du carrousel

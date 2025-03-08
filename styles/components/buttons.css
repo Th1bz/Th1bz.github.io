@@ -13,6 +13,7 @@
   border-radius: 0;
 }
 
+/* Pseudo-élément pour le bouton */
 .btn span {
   display: inline-block;
   transform: skew(15deg);
@@ -31,6 +32,7 @@
   z-index: 1;
 }
 
+/* Pseudo-élément pour le bouton primaire */
 .btn-primary::before {
   content: "";
   position: absolute;
@@ -47,10 +49,12 @@
   z-index: -1;
 }
 
+/* Animation du bouton primaire au hover */
 .btn-primary:hover::before {
   left: 0;
 }
 
+/* Animation du bouton primaire au hover */
 .btn-primary:hover {
   transform: skew(-15deg) translateY(-2px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
@@ -65,6 +69,7 @@
   z-index: 1;
 }
 
+/* Pseudo-élément pour le bouton outline */
 .btn-outline-primary::before {
   content: "";
   position: absolute;
@@ -77,10 +82,12 @@
   z-index: -1;
 }
 
+/* Animation du bouton outline au hover */
 .btn-outline-primary:hover::before {
   left: 0;
 }
 
+/* Style du bouton outline au hover */
 .btn-outline-primary:hover {
   color: var(--bg-color);
   transform: skew(-15deg) translateY(-2px);
