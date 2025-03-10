@@ -111,9 +111,16 @@ function createGrid() {
   const grid = document.createElement("div");
   grid.className = "grid";
 
+  // Ajout de l'image de la DeLorean
+  const carImage = document.createElement("img");
+  carImage.src = "assets/images/esquisse-delorean.png";
+  carImage.alt = "DeLorean esquisse";
+  carImage.className = "hero-car";
+
   // Assemblage des éléments
   gridBackground.appendChild(grid);
   heroSection.insertBefore(gridBackground, heroSection.firstChild);
+  heroSection.appendChild(carImage); // Ajout de l'image directement à la section hero
 }
 
 /**

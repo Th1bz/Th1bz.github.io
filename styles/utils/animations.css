@@ -71,3 +71,22 @@
     transform: scale(1);
   }
 }
+
+/* Animation flottante pour la voiture DeLorean */
+@keyframes floatCar {
+  0% {
+    rotate: 0deg;
+  }
+  45% {
+    rotate: -1deg;
+  }
+  50% {
+    rotate: 0deg;
+  }
+  55% {
+    rotate: 1deg;
+  }
+  100% {
+    rotate: 0deg;
+  }
+}
