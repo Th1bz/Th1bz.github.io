@@ -47,15 +47,16 @@
 /* Voiture DeLorean */
 .hero-car {
   position: absolute;
-  bottom: -100px;
+  bottom: 0;
   right: 0;
   width: 38%;
-  max-width: 450px;
-  z-index: 2;
+  max-width: 200px;
+  z-index: 5;
   opacity: 0.8;
-  transform: translateY(20px);
+  transform: translateY(0);
   animation: floatCar 1s ease-in-out infinite;
   transition: opacity 0.5s ease, filter 0.5s ease;
+  pointer-events: none;
   /* Filtre pour transformer l'image en silhouette bleu turquoise */
   filter: brightness(0) /* Créer une silhouette noire */ sepia(1)
     hue-rotate(160deg) /* Valeur pour obtenir du turquoise */ saturate(6)
@@ -63,8 +64,35 @@
 }
 
 .hero-car:hover {
-  opacity: 1;
-  /* Intensification de l'effet bleu au survol */
-  filter: brightness(0) sepia(1) hue-rotate(160deg) saturate(8) brightness(1.4)
-    contrast(1.2) drop-shadow(0 0 18px rgba(0, 215, 255, 1));
+}
+
+/* Ajustements responsifs pour la voiture */
+@media (max-width: 1400px) {
+  .hero-car {
+    width: 35%;
+  }
+}
+
+@media (max-width: 1200px) {
+  .hero-car {
+    width: 38%;
+  }
+}
+
+@media (max-width: 992px) {
+  .hero-car {
+    width: 42%;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-car {
+    width: 45%;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-car {
+    width: 50%;
+  }
 }

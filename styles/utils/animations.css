@@ -75,18 +75,24 @@
 /* Animation flottante pour la voiture DeLorean */
 @keyframes floatCar {
   0% {
-    rotate: 0deg;
+    transform: translateY(0) rotate(0deg);
   }
   45% {
-    rotate: -1deg;
+    transform: translateY(0) rotate(-1deg);
+    opacity: 1;
+    filter: brightness(0) sepia(1) hue-rotate(160deg) saturate(8)
+      brightness(1.4) contrast(1.2) drop-shadow(0 0 18px rgba(0, 215, 255, 1));
   }
   50% {
-    rotate: 0deg;
+    transform: translateY(0) rotate(0deg);
   }
   55% {
-    rotate: 1deg;
+    transform: translateY(0) rotate(1deg);
+    opacity: 1;
+    filter: brightness(0) sepia(1) hue-rotate(160deg) saturate(8)
+      brightness(1.4) contrast(1.2) drop-shadow(0 0 18px rgba(0, 215, 255, 1));
   }
   100% {
-    rotate: 0deg;
+    transform: translateY(0) rotate(0deg);
   }
 }
