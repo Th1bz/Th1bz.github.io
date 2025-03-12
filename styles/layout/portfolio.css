@@ -1,3 +1,38 @@
+/* Styles pour le message d'accueil du portfolio */
+.portfolio-welcome {
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem auto;
+  max-width: 800px;
+  color: var(--text-color);
+  background-color: rgba(var(--card-bg-rgb), 0.3);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(var(--primary-rgb), 0.1);
+  transition: all 0.3s ease;
+}
+
+.portfolio-welcome .welcome-icon {
+  color: var(--primary-color);
+  animation: pulse 2s infinite;
+}
+
+.portfolio-welcome h3 {
+  font-weight: 600;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.portfolio-welcome p {
+  font-size: 1.1rem;
+  opacity: 0.8;
+  max-width: 80%;
+  margin: 0 auto 1.5rem;
+}
+
 /* Styles pour la section Portfolio Détaillé */
 .portfolio {
   background: linear-gradient(135deg, var(--bg-color), rgba(15, 15, 35, 0.95));
@@ -156,8 +191,8 @@
 }
 
 .portfolio-buttons a {
-  width: 45px;
-  height: 45px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   background: rgba(var(--primary-color-rgb), 0.9);
   color: var(--secondary-color);
@@ -169,6 +204,10 @@
   transition: all 0.3s ease;
 }
 
+.portfolio-buttons a i {
+  font-size: 1.5rem;
+}
+
 .portfolio-card:hover .portfolio-buttons a {
   transform: translateY(0);
   opacity: 1;
@@ -177,6 +216,7 @@
 .portfolio-buttons a:hover {
   background: var(--primary-color);
   box-shadow: 0 0 15px rgba(var(--primary-color-rgb), 0.7);
+  transform: scale(1.15);
 }
 
 .portfolio-info {

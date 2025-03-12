@@ -24,8 +24,8 @@ async function initProjectCarousel() {
     const indicatorsContainer = document.createElement("div");
     indicatorsContainer.className = "carousel-indicators";
 
-    // Si nous avons plus de 10 projets, nous utilisons une approche différente
-    if (totalCards > 10) {
+    // Si nous avons plus de 6 projets, nous utilisons une approche différente
+    if (totalCards > 6) {
       // Créer seulement les indicateurs pour le projet actuel, précédent et suivant
       // et ajouter des marqueurs pour indiquer qu'il y a d'autres projets
       for (let i = 0; i < totalCards; i++) {

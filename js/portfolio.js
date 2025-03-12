@@ -6,7 +6,7 @@
 import { loadProjects } from "./projectsManager.js";
 
 let visibleItems = 6; // Nombre d'éléments visibles initialement
-let currentCategory = "all"; // Catégorie active par défaut
+let currentCategory = "none"; // Catégorie active par défaut
 
 /**
  * Initialise la section portfolio
@@ -18,6 +18,18 @@ async function initPortfolio() {
     setupFilterButtons();
     setupLoadMoreButton();
     setupModalDetails();
+
+    // Appliquer le filtre "none" dès l'initialisation
+    filterProjects("none");
+
+    // Sélectionner visuellement le bouton "none" par défaut
+    document.querySelectorAll(".filter-btn").forEach((btn) => {
+      btn.classList.remove("active");
+      if (btn.getAttribute("data-filter") === "none") {
+        btn.classList.add("active");
+      }
+    });
+
     console.log("Portfolio initialisé avec succès");
   } catch (error) {
     console.error("Erreur lors de l'initialisation du portfolio:", error);
@@ -153,15 +165,56 @@ function filterProjects(category) {
   const portfolioItems = document.querySelectorAll(".portfolio-item");
   let visibleCount = 0;
   const portfolioSection = document.getElementById("portfolio");
+  const portfolioContainer = document.getElementById("portfolio-items");
 
-  // Si la catégorie est "none", on cache tous les projets et on réduit la hauteur
+  // Si la catégorie est "none", on cache tous les projets et on affiche un message
   if (category === "none") {
     portfolioItems.forEach((item) => item.classList.add("hidden"));
-    portfolioSection.classList.add("reduced-height");
+
+    // Vérifier si le message d'accueil existe déjà
+    if (!document.querySelector(".portfolio-welcome")) {
+      // Créer un contenu alternatif
+      const welcomeHtml = `
+        <div class="portfolio-welcome text-center py-5">
+          <div class="welcome-icon mb-4">
+            <i class="fas fa-folder-open fa-4x"></i>
+          </div>
+          <h3 class="mb-3">Découvrez mes réalisations</h3>
+          <p class="mb-4">Sélectionnez une catégorie ci-dessus pour explorer mes projets</p>
+        </div>
+      `;
+
+      // Insérer le contenu avant les éléments du portfolio
+      portfolioContainer.insertAdjacentHTML("beforebegin", welcomeHtml);
+
+      // Ajouter des écouteurs d'événements aux boutons guides
+      document.querySelectorAll(".guide-btn").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          const filterValue = this.getAttribute("data-filter");
+
+          // Trouver et cliquer sur le bouton de filtre correspondant dans les filtres
+          document
+            .querySelector(
+              `.filter-buttons .filter-btn[data-filter="${filterValue}"]`
+            )
+            .click();
+        });
+      });
+    } else {
+      // Afficher le message s'il existe déjà
+      document.querySelector(".portfolio-welcome").style.display = "block";
+    }
+
     // Masquer le bouton "Voir plus"
     const loadMoreBtn = document.getElementById("load-more");
     loadMoreBtn.style.display = "none";
     return;
+  }
+
+  // Pour les autres catégories, cacher le message d'accueil s'il existe
+  const welcomeMessage = document.querySelector(".portfolio-welcome");
+  if (welcomeMessage) {
+    welcomeMessage.style.display = "none";
   }
 
   // Pour les autres catégories, restaurer la hauteur normale

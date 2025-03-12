@@ -150,10 +150,41 @@
   backface-visibility: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   text-align: center;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+/* Conteneur défilable pour le contenu de la face arrière */
+.project-info-scroll {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  /* Styles personnalisés pour la scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-color) rgba(255, 255, 255, 0.05);
+  padding-right: 10px; /* Espace pour la scrollbar */
+}
+
+/* Styles pour la scrollbar sur WebKit (Chrome, Safari, etc.) */
+.project-info-scroll::-webkit-scrollbar {
+  width: 5px;
+}
+
+.project-info-scroll::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+.project-info-scroll::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 10px;
+}
+
+.project-info-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-color);
 }
 
 /* Animation de retournement pour la carte active */

@@ -46,19 +46,21 @@ function generateProjectHTML(project, className = "") {
       <div class="project-content">
         <img src="${project.image}" alt="${project.title}" loading="lazy" />
         <div class="project-info">
-          <h3>${project.title}</h3>
-          <p>${project.description}</p>
-          <div class="project-tech">
-            ${project.technologies
-              .map((tech) => `<span>${tech}</span>`)
-              .join("")}
+          <div class="project-info-scroll">
+            <h3>${project.title}</h3>
+            <p>${project.description}</p>
+            <div class="project-tech">
+              ${project.technologies
+                .map((tech) => `<span>${tech}</span>`)
+                .join("")}
+            </div>
+            <a href="${project.url}" 
+               class="btn btn-primary mt-3" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               ${buttonState}
+            >Voir le projet</a>
           </div>
-          <a href="${project.url}" 
-             class="btn btn-primary mt-3" 
-             target="_blank" 
-             rel="noopener noreferrer"
-             ${buttonState}
-          >Voir le projet</a>
         </div>
       </div>
     </div>

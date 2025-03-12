@@ -5,6 +5,14 @@
   overflow: hidden;
 }
 
+.pricing-disclaimer {
+  font-style: italic;
+  color: #6c757d;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* Style des cartes de prix */
 .pricing-card {
   background: rgba(255, 255, 255, 0.02);
