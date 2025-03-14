@@ -10,7 +10,7 @@
     "category": "app",
     "client": "Projet d'étude",
     "date": "Décembre 2024",
-    "fullDescription": "Application web complète destinée aux visiteurs et aux employés du zoo Arcadia. Ce projet comprend une partie publique pour la consultation des animaux et des spectacles, ainsi qu'une interface administrateur pour la gestion du zoo."
+    "fullDescription": "Application web complète destinée aux visiteurs et aux employés du zoo Arcadia. Ce projet comprend une partie publique pour la consultation des animaux et des spectacles, ainsi qu'une interface administrateur pour la gestion du zoo. (hébergement du back-end désactivé)"
   },
   {
     "id": 2,
@@ -50,5 +50,18 @@
     "client": "Template personnel",
     "date": "Février 2025",
     "fullDescription": "Template de site vitrine responsive et moderne, conçu pour être facilement personnalisable et adapté aux besoins des petites entreprises et professionnels."
+  },
+  {
+    "id": 5,
+    "title": "Multitek",
+    "description": "Développement d'un site vitrine avec formulaire de contact.",
+    "image": "assets/images/AccueilMultiteK.png",
+    "technologies": ["HTML5", "CSS3", "JavaScript"],
+    "url": "https://th1bz.github.io/MultiteK/",
+    "status": "active",
+    "category": "web",
+    "client": "SARL, MultiteK",
+    "date": "Mars 2025",
+    "fullDescription": "Site vitrine avec formulaire de contact pour une entreprise de vente, réparation et location de matériel de manutention, conçu pour être facilement maintenable, responsive et moderne."
   }
 ]
