@@ -63,5 +63,18 @@
     "client": "SARL, MultiteK",
     "date": "Mars 2025",
     "fullDescription": "Site vitrine avec formulaire de contact pour une entreprise de vente, réparation et location de matériel de manutention, conçu pour être facilement maintenable, responsive et moderne."
+  },
+  {
+    "id": 6,
+    "title": "ADE Pare-brise",
+    "description": "Développement d'un site vitrine avec formulaire de contact.",
+    "image": "assets/images/accueiladeparebrise.png",
+    "technologies": ["HTML5", "CSS3", "JavaScript"],
+    "url": "https://adeparebrise.fr/",
+    "status": "active",
+    "category": "web",
+    "client": "ADE Pare-brise",
+    "date": "Mars 2025",
+    "fullDescription": "Site vitrine avec formulaire de contact pour une entreprise de réparation et de remplacement de pare-brise à domicile."
   }
 ]
