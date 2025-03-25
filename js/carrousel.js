@@ -141,20 +141,28 @@ async function initProjectCarousel() {
   const container = document.querySelector(".carousel-container");
 
   if (container) {
-    container.addEventListener("touchstart", (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-    });
+    container.addEventListener(
+      "touchstart",
+      (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      },
+      { passive: true }
+    );
 
-    container.addEventListener("touchend", (e) => {
-      const touchEndX = e.changedTouches[0].screenX;
-      const diff = touchStartX - touchEndX;
+    container.addEventListener(
+      "touchend",
+      (e) => {
+        const touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
 
-      if (Math.abs(diff) > 50) {
-        diff > 0
-          ? goToSlide((currentIndex + 1) % totalCards)
-          : goToSlide((currentIndex - 1 + totalCards) % totalCards);
-      }
-    });
+        if (Math.abs(diff) > 50) {
+          diff > 0
+            ? goToSlide((currentIndex + 1) % totalCards)
+            : goToSlide((currentIndex - 1 + totalCards) % totalCards);
+        }
+      },
+      { passive: true }
+    );
 
     // Navigation au clavier
     document.addEventListener("keydown", (e) => {
