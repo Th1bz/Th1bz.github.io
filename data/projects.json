@@ -6,7 +6,7 @@
     "image": "assets/images/ProjetArcadia.png",
     "videoUrl": "assets/videos/arcadia-demo.mp4",
     "technologies": ["Symfony", "SQL & NoSQL", "API REST"],
-    "url": "https://th1bz-arcadia.alwaysdata.net/",
+    "url": "#",
     "status": "active",
     "category": "app",
     "client": "Projet d'étude",
