@@ -93,13 +93,6 @@ async function generatePortfolioItems() {
                   <a href="#" class="view-details" data-id="${project.id}">
                     <i class="fas fa-eye"></i>
                   </a>
-                  ${
-                    project.url && project.status !== "disabled"
-                      ? `<a href="${project.url}" target="_blank" class="view-live">
-                      <i class="fas fa-external-link-alt"></i>
-                    </a>`
-                      : ""
-                  }
                 </div>
               </div>
             </div>

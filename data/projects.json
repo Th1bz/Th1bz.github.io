@@ -35,7 +35,7 @@
     "videoUrl": "assets/videos/calculatrice-demo.mp4",
     "technologies": ["Vite.js", "React", "Tailwind CSS"],
     "url": "https://th1bz.github.io/Calculatrice-React-et-Tailwindcss/",
-    "status": "active",
+    "status": "disabled",
     "category": "app",
     "client": "Projet personnel",
     "date": "Janvier 2025",
