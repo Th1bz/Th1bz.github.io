@@ -7,7 +7,7 @@
     "videoUrl": "assets/videos/arcadia-demo.mp4",
     "technologies": ["Symfony", "SQL & NoSQL", "API REST"],
     "url": "#",
-    "status": "active",
+    "status": "disabled",
     "category": "app",
     "client": "Projet d'étude",
     "date": "Décembre 2024",
