@@ -442,7 +442,7 @@ function createDetailedContent(project) {
             ${
               project.videoUrl
                 ? `
-              <video class="details-video" controls autoplay muted loop>
+              <video class="details-video" controls autoplay muted loop playsinline>
                 <source src="${project.videoUrl}" type="video/mp4">
                 Votre navigateur ne supporte pas la lecture de vidéos.
               </video>
