@@ -7,6 +7,7 @@ import { loadProjects } from "./projectsManager.js";
 
 let visibleItems = 6; // Nombre d'éléments visibles initialement
 let currentCategory = "none"; // Catégorie active par défaut
+let expandedCard = null; // Carte actuellement agrandie
 
 /**
  * Initialise la section portfolio
@@ -17,7 +18,7 @@ async function initPortfolio() {
     await generatePortfolioItems();
     setupFilterButtons();
     setupLoadMoreButton();
-    setupModalDetails();
+    setupCardExpansion(); // Remplacé setupModalDetails
 
     // Appliquer le filtre "none" dès l'initialisation
     filterProjects("none");
@@ -266,6 +267,261 @@ function updateLoadMoreButton(category) {
 }
 
 /**
+ * Configure l'agrandissement des cartes de projet
+ */
+function setupCardExpansion() {
+  console.log("Configuration de l'agrandissement des cartes...");
+
+  // Ajouter des listeners pour les boutons de détails avec délégation d'événements
+  document.addEventListener("click", function (e) {
+    console.log("Clic détecté sur:", e.target, "Classe:", e.target.className);
+
+    // Vérifier si le clic est sur l'icône ou le lien
+    const viewDetailsButton = e.target.closest(".view-details");
+    const isIconClick =
+      e.target.classList.contains("fa-eye") ||
+      e.target.classList.contains("fas");
+
+    if (viewDetailsButton || isIconClick) {
+      console.log("Bouton view-details cliqué!");
+      e.preventDefault();
+      e.stopPropagation();
+
+      // Trouver le bouton view-details le plus proche
+      const detailsButton =
+        e.target.closest(".view-details") ||
+        e.target.parentElement.closest(".view-details");
+
+      if (!detailsButton) {
+        console.error("Impossible de trouver le bouton view-details");
+        return;
+      }
+
+      const projectId = detailsButton.getAttribute("data-id");
+      console.log("Bouton de détails cliqué pour le projet ID:", projectId);
+
+      if (projectId) {
+        toggleCardExpansion(projectId);
+      } else {
+        console.error(
+          "Impossible de trouver l'ID du projet dans le bouton de détails"
+        );
+      }
+    }
+  });
+
+  // Fermer la carte agrandie au clic à l'extérieur
+  document.addEventListener("click", function (e) {
+    if (
+      expandedCard &&
+      !expandedCard.contains(e.target) &&
+      !e.target.closest(".view-details") &&
+      !e.target.closest(".portfolio-details")
+    ) {
+      closeExpandedCard();
+    }
+  });
+
+  // Fermer la carte agrandie avec la touche Escape
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && expandedCard) {
+      closeExpandedCard();
+    }
+  });
+
+  console.log("Configuration de l'agrandissement des cartes terminée");
+}
+
+/**
+ * Bascule l'agrandissement d'une carte de projet
+ * @param {string} projectId - L'ID du projet à agrandir/réduire
+ */
+async function toggleCardExpansion(projectId) {
+  try {
+    const projects = await loadProjects();
+    const numericProjectId = parseInt(projectId, 10);
+    const project = projects.find((p) => p.id === numericProjectId);
+
+    if (!project) {
+      throw new Error(`Projet avec ID ${projectId} non trouvé`);
+    }
+
+    const cardElement = document.querySelector(
+      `.portfolio-item[data-id="${projectId}"]`
+    );
+
+    if (!cardElement) {
+      throw new Error(`Carte du projet ${projectId} non trouvée`);
+    }
+
+    // Si une carte est déjà agrandie, la fermer d'abord
+    if (expandedCard && expandedCard !== cardElement) {
+      closeExpandedCard();
+    }
+
+    // Si la carte cliquée est déjà agrandie, la fermer
+    if (cardElement.classList.contains("expanded")) {
+      closeExpandedCard();
+      return;
+    }
+
+    // Agrandir la carte
+    expandCard(cardElement, project);
+  } catch (error) {
+    console.error("Erreur lors de l'agrandissement de la carte:", error);
+  }
+}
+
+/**
+ * Agrandit une carte de projet avec les détails
+ * @param {HTMLElement} cardElement - L'élément de la carte à agrandir
+ * @param {Object} project - Les données du projet
+ */
+function expandCard(cardElement, project) {
+  // Fermer toute carte précédemment agrandie
+  if (expandedCard) {
+    closeExpandedCard();
+  }
+
+  const portfolioCard = cardElement.querySelector(".portfolio-card");
+  if (!portfolioCard) {
+    console.error("Élément .portfolio-card non trouvé dans :", cardElement);
+    return;
+  }
+
+  // Créer le contenu détaillé
+  const detailedContent = createDetailedContent(project);
+
+  // Ajouter la classe expanded et le contenu détaillé
+  cardElement.classList.add("expanded");
+  portfolioCard.appendChild(detailedContent);
+
+  // Marquer cette carte comme agrandie
+  expandedCard = cardElement;
+
+  // Faire défiler vers la carte agrandie
+  setTimeout(() => {
+    cardElement.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    });
+  }, 300);
+}
+
+/**
+ * Crée le contenu détaillé pour une carte agrandie
+ * @param {Object} project - Les données du projet
+ * @returns {HTMLElement} L'élément contenant les détails
+ */
+function createDetailedContent(project) {
+  const detailedContent = document.createElement("div");
+  detailedContent.className = "portfolio-details";
+
+  // Créer le contenu HTML des détails
+  detailedContent.innerHTML = `
+    <div class="details-overlay">
+      <button class="close-details" aria-label="Fermer les détails">
+        <i class="fas fa-times"></i>
+      </button>
+      <div class="details-content">
+        <div class="details-header">
+          <h3 class="details-title">${project.title}</h3>
+          <div class="details-meta">
+            <span class="details-category">${getCategoryName(
+              project.category || "web"
+            )}</span>
+            <span class="details-client">${
+              project.client || "Projet personnel"
+            }</span>
+            <span class="details-date">${project.date || "Non spécifié"}</span>
+          </div>
+        </div>
+        
+        <div class="details-body">
+          <div class="details-gallery">
+            ${
+              project.videoUrl
+                ? `
+              <video class="details-video" controls autoplay muted loop>
+                <source src="${project.videoUrl}" type="video/mp4">
+                Votre navigateur ne supporte pas la lecture de vidéos.
+              </video>
+            `
+                : `
+              <img src="${project.image}" class="details-image" alt="${project.title}">
+            `
+            }
+          </div>
+          
+          <div class="details-info-grid">
+            <div class="details-description">
+              <h4>Description</h4>
+              <p>${project.fullDescription || project.description}</p>
+            </div>
+            
+            <div class="details-info">
+              <div class="details-technologies">
+                <h4>Technologies</h4>
+                <div class="details-tech-tags">
+                  ${project.technologies
+                    .map((tech) => `<span>${tech}</span>`)
+                    .join("")}
+                </div>
+              </div>
+              
+              <div class="details-links">
+                ${
+                  project.url && project.status !== "disabled"
+                    ? `
+                  <a href="${project.url}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-external-link-alt"></i> Voir le site
+                  </a>
+                `
+                    : ""
+                }
+                ${
+                  project.github
+                    ? `
+                  <a href="${project.github}" class="btn btn-outline-primary details-link" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-github"></i> Voir le code
+                  </a>
+                `
+                    : ""
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  // Ajouter l'écouteur pour fermer les détails
+  detailedContent
+    .querySelector(".close-details")
+    .addEventListener("click", (e) => {
+      e.stopPropagation();
+      closeExpandedCard();
+    });
+
+  return detailedContent;
+}
+
+/**
+ * Ferme la carte actuellement agrandie
+ */
+function closeExpandedCard() {
+  if (expandedCard) {
+    const detailsElement = expandedCard.querySelector(".portfolio-details");
+    if (detailsElement) {
+      detailsElement.remove();
+    }
+    expandedCard.classList.remove("expanded");
+    expandedCard = null;
+  }
+}
+
+/**
  * Configure le bouton "Voir plus"
  */
 function setupLoadMoreButton() {
@@ -278,237 +534,6 @@ function setupLoadMoreButton() {
     // Mettre à jour l'affichage
     filterProjects(currentCategory);
   });
-}
-
-/**
- * Configure les modals de détails des projets
- */
-function setupModalDetails() {
-  // Ajouter des listeners pour les boutons de détails
-  document.addEventListener("click", function (e) {
-    if (e.target.closest(".view-details")) {
-      e.preventDefault();
-      const detailsButton = e.target.closest(".view-details");
-      const projectId = detailsButton.getAttribute("data-id");
-      console.log("Bouton de détails cliqué pour le projet ID:", projectId);
-
-      if (projectId) {
-        showProjectDetails(projectId);
-      } else {
-        console.error(
-          "Impossible de trouver l'ID du projet dans le bouton de détails"
-        );
-      }
-    }
-  });
-
-  // Listener pour fermer la modal au clic à l'extérieur
-  document.addEventListener("click", function (e) {
-    const modal = document.getElementById("projectModal");
-    const modalDialog = modal?.querySelector(".modal-dialog");
-
-    // Vérifier si la modal est ouverte et si le clic est en dehors de la modal
-    if (
-      modal &&
-      modal.classList.contains("show") &&
-      modalDialog &&
-      !modalDialog.contains(e.target)
-    ) {
-      // S'assurer que le clic n'est pas sur un élément à l'intérieur de la modal,
-      // ni sur un lien, ni sur le bouton d'ouverture
-      if (
-        !e.target.closest(".modal-content") &&
-        !e.target.closest(".view-details") &&
-        !e.target.closest("a") &&
-        e.target.tagName.toLowerCase() !== "a"
-      ) {
-        closeProjectModal();
-      }
-    }
-  });
-
-  // Listener pour fermer la modal au scroll
-  let scrollTimeout;
-  window.addEventListener("scroll", function () {
-    if (scrollTimeout) {
-      clearTimeout(scrollTimeout);
-    }
-
-    scrollTimeout = setTimeout(function () {
-      const modal = document.getElementById("projectModal");
-      // Ne pas fermer la modal si l'utilisateur interagit avec un lien ou un bouton
-      if (
-        modal &&
-        modal.classList.contains("show") &&
-        document.activeElement.tagName.toLowerCase() !== "a" &&
-        document.activeElement.tagName.toLowerCase() !== "button"
-      ) {
-        closeProjectModal();
-      }
-    }, 150); // Délai court pour éviter de fermer immédiatement au petit scroll
-  });
-}
-
-/**
- * Affiche les détails d'un projet dans une modal
- * @param {string} projectId - L'ID du projet à afficher
- */
-async function showProjectDetails(projectId) {
-  try {
-    const projects = await loadProjects();
-    console.log("Type de projectId:", typeof projectId, "Valeur:", projectId);
-    console.log(
-      "Projets disponibles:",
-      projects.map((p) => `ID ${p.id} (${typeof p.id})`).join(", ")
-    );
-
-    // Convertir l'ID en nombre pour la comparaison (car il vient d'un attribut HTML)
-    const numericProjectId = parseInt(projectId, 10);
-    const project = projects.find((p) => p.id === numericProjectId);
-
-    if (!project) {
-      throw new Error(`Projet avec ID ${projectId} non trouvé`);
-    }
-
-    // Remplir la modal avec les détails du projet
-    const modal = document.getElementById("projectModal");
-    const modalTitle = modal.querySelector(".project-title");
-    const modalCategory = modal.querySelector(".project-category");
-    const modalClient = modal.querySelector(".project-client");
-    const modalDate = modal.querySelector(".project-date");
-    const modalDescription = modal.querySelector(".project-description");
-    const modalTechTags = modal.querySelector(".tech-tags");
-    const modalLiveLink = modal.querySelector(".project-live-link");
-    const modalCodeLink = modal.querySelector(".project-code-link");
-    const modalGallery = modal.querySelector(".project-gallery");
-
-    // Remplir les champs de la modal
-    modalTitle.textContent = project.title;
-    modalCategory.textContent = getCategoryName(project.category || "web");
-    modalClient.textContent = project.client || "Projet personnel";
-    modalDate.textContent = project.date || "Non spécifié";
-    modalDescription.innerHTML = project.fullDescription || project.description;
-
-    // Technologies
-    modalTechTags.innerHTML = project.technologies
-      .map((tech) => `<span>${tech}</span>`)
-      .join("");
-
-    // Liens - Corriger et mettre à jour les liens
-    if (project.url && project.status !== "disabled") {
-      modalLiveLink.href = project.url;
-      modalLiveLink.style.display = "inline-block";
-      modalLiveLink.target = "_blank"; // S'assurer que le lien s'ouvre dans un nouvel onglet
-      modalLiveLink.rel = "noopener noreferrer"; // Sécurité pour les liens externes
-
-      // Retirer les écouteurs d'événements existants qui pourraient interférer
-      const newLiveLink = modalLiveLink.cloneNode(true);
-      modalLiveLink.parentNode.replaceChild(newLiveLink, modalLiveLink);
-
-      // S'assurer que le lien est actif
-      console.log("Lien live configuré:", project.url);
-    } else {
-      modalLiveLink.style.display = "none";
-    }
-
-    if (project.github) {
-      modalCodeLink.href = project.github;
-      modalCodeLink.style.display = "inline-block";
-      modalCodeLink.target = "_blank";
-      modalCodeLink.rel = "noopener noreferrer";
-
-      // Retirer les écouteurs d'événements existants qui pourraient interférer
-      const newCodeLink = modalCodeLink.cloneNode(true);
-      modalCodeLink.parentNode.replaceChild(newCodeLink, modalCodeLink);
-
-      // S'assurer que le lien est actif
-      console.log("Lien GitHub configuré:", project.github);
-    } else {
-      modalCodeLink.style.display = "none";
-    }
-
-    // Galerie d'images
-    modalGallery.innerHTML = `<img src="${project.image}" class="img-fluid w-100" alt="${project.title}">`;
-
-    // Supprimer le backdrop existant s'il existe
-    document.querySelectorAll(".modal-backdrop").forEach((el) => el.remove());
-
-    // Afficher la modal avec backdrop static (ne ferme pas au clic extérieur)
-    const modalInstance = new bootstrap.Modal(modal, {
-      backdrop: false,
-      keyboard: true,
-      focus: true,
-    });
-
-    // Si la modal est déjà ouverte, la fermer d'abord
-    if (modal.classList.contains("show")) {
-      const oldModal = bootstrap.Modal.getInstance(modal);
-      if (oldModal) oldModal.hide();
-    }
-
-    modalInstance.show();
-
-    // Nettoyer les classes ajoutées par Bootstrap
-    document.body.classList.remove("modal-open");
-    document.body.style.overflow = "";
-    document.body.style.paddingRight = "";
-
-    // Ajouter des gestionnaires d'événements pour les liens
-    addLinkEventHandlers();
-  } catch (error) {
-    console.error("Erreur lors de l'affichage des détails du projet:", error);
-  }
-}
-
-/**
- * Ajoute des gestionnaires d'événements pour les liens dans la modal
- * afin de s'assurer qu'ils fonctionnent correctement
- */
-function addLinkEventHandlers() {
-  // Récupérer tous les liens dans la modal
-  const modal = document.getElementById("projectModal");
-  const links = modal.querySelectorAll("a[href]");
-
-  links.forEach((link) => {
-    // Retirer les écouteurs d'événements existants
-    const newLink = link.cloneNode(true);
-    link.parentNode.replaceChild(newLink, link);
-
-    // Ajouter le nouvel écouteur d'événements
-    newLink.addEventListener("click", function (event) {
-      // Empêcher la propagation de l'événement pour éviter
-      // que d'autres gestionnaires n'interfèrent
-      event.stopPropagation();
-
-      // Si c'est un lien externe (commence par http ou https)
-      if (this.href.startsWith("http")) {
-        // Permet l'ouverture normale du lien dans un nouvel onglet
-        console.log("Lien externe cliqué:", this.href);
-        return true;
-      }
-    });
-  });
-}
-
-/**
- * Ferme la modal de projet
- */
-function closeProjectModal() {
-  const modal = document.getElementById("projectModal");
-  if (modal) {
-    const modalInstance = bootstrap.Modal.getInstance(modal);
-    if (modalInstance) {
-      modalInstance.hide();
-    }
-
-    // Nettoyer les classes et styles ajoutés par Bootstrap
-    setTimeout(() => {
-      document.querySelectorAll(".modal-backdrop").forEach((el) => el.remove());
-      document.body.classList.remove("modal-open");
-      document.body.style.overflow = "";
-      document.body.style.paddingRight = "";
-    }, 300);
-  }
 }
 
 /**
