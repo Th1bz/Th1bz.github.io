@@ -60,6 +60,34 @@ function initSmoothScroll() {
   });
 }
 
+// Fermeture de la navbar au clic à côté
+function initNavbarClickOutside() {
+  const navbar = document.querySelector(".navbar");
+  const navbarToggler = document.querySelector(".navbar-toggler");
+  const navbarCollapse = document.querySelector(".navbar-collapse");
+
+  // Écouteur d'événement sur le document
+  document.addEventListener("click", function (event) {
+    // Vérifier si la navbar est ouverte
+    if (navbarCollapse.classList.contains("show")) {
+      // Vérifier si le clic n'est pas dans la navbar ou sur le bouton toggle
+      const isClickInsideNavbar = navbar.contains(event.target);
+      const isClickOnToggler = navbarToggler.contains(event.target);
+
+      // Si le clic est à l'extérieur de la navbar et pas sur le bouton toggle
+      if (!isClickInsideNavbar && !isClickOnToggler) {
+        // Fermer la navbar
+        navbarToggler.click();
+      }
+    }
+  });
+
+  // Empêcher la propagation des clics à l'intérieur de la navbar
+  navbar.addEventListener("click", function (event) {
+    event.stopPropagation();
+  });
+}
+
 /**
  * SECTION 2: Animations au Scroll
  * Gestion des animations d'apparition des éléments
@@ -135,6 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initialisation de la navigation
   window.addEventListener("scroll", handleNavbarScroll);
   initSmoothScroll();
+  initNavbarClickOutside();
 
   // Initialisation des animations
   createGrid();
