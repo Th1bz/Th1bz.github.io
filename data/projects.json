@@ -1,9 +1,23 @@
 [
   {
     "id": 1,
+    "title": "Nexus API",
+    "description": "API centralisé pour tous mes futures projet, avec dashboard administrateur, suivis statistiques, etc. ( Projet hors ligne, en cours de développement )",
+    "image": "assets/images/AccueilNexusAPI.png",
+    "videoUrl": "#",
+    "technologies": ["Symfony", "SQL & NoSQL", "API REST"],
+    "url": "#",
+    "status": "disabled",
+    "category": "app",
+    "client": "Projet personnel",
+    "date": "Juillet 2025",
+    "fullDescription": "Développement en cours d'une API Symfony centralisé pour tous mes futures projet, avec dashboard administrateur, suivis statistiques, etc. Ce qui permet de centraliser les données de mes projets et utilisateurs et de les réutiliser dans d'autres projets. Depuis cette espace, chaques projets, utilisateurs et statistiques sont gérés et affichés."
+  },
+  {
+    "id": 2,
     "title": "Zoo Arcadia",
     "description": "Application web destinée aux visiteurs et aux employés du zoo avec une interface administrateur.",
-    "image": "assets/images/ProjetArcadia.png",
+    "image": "assets/images/AccueilArcadia.png",
     "videoUrl": "assets/videos/arcadia-demo.mp4",
     "technologies": ["Symfony", "SQL & NoSQL", "API REST"],
     "url": "#",
@@ -11,14 +25,14 @@
     "category": "app",
     "client": "Projet d'étude",
     "date": "Décembre 2024",
-    "fullDescription": "Application web complète destinée aux visiteurs et aux employés du zoo Arcadia. Ce projet comprend une partie publique pour la consultation des animaux et des spectacles, ainsi qu'une interface administrateur pour la gestion du zoo. (hébergement du back-end désactivé)"
+    "fullDescription": "Application web complète destinée aux visiteurs et aux employés du zoo Arcadia. Ce projet comprend une partie publique pour la consultation des animaux et des spectacles, ainsi qu'une interface administrateur pour la gestion du zoo. (hébergement désactivé)"
   },
   {
-    "id": 2,
+    "id": 3,
     "title": "CheckIt",
     "description": "Application web pour créer et gérer des listes de tâches.",
     "image": "assets/images/ProjetCheckIt.png",
-    "videoUrl": "assets/videos/checkit-demo.mp4",
+    "videoUrl": "#",
     "technologies": ["PHP", "MySQL", "Bootstrap"],
     "url": "#",
     "status": "disabled",
@@ -28,7 +42,7 @@
     "fullDescription": "Application de gestion de tâches qui permet aux utilisateurs de créer, organiser et suivre leurs tâches quotidiennes. Fonctionnalités de listes, catégories et priorités."
   },
   {
-    "id": 3,
+    "id": 4,
     "title": "Calculatrice",
     "description": "Développement d'une calculatrice simple avec Vite.js, React et Tailwind CSS.",
     "image": "assets/images/HomeCalculatrice.png",
@@ -42,7 +56,7 @@
     "fullDescription": "Calculatrice interactive développée avec les technologies modernes React et Tailwind CSS, offrant une interface utilisateur élégante et réactive."
   },
   {
-    "id": 4,
+    "id": 5,
     "title": "Template Site Vitrine",
     "description": "Développement d'un template de site vitrine personnalisable simple et responsive.",
     "image": "assets/images/Screen_Template-V1.png",
