@@ -5,7 +5,7 @@
     "description": "API centralisé pour tous mes futures projet, avec dashboard administrateur, suivis statistiques, etc. ( Projet hors ligne, en cours de développement )",
     "image": "assets/images/AccueilNexusAPI.png",
     "videoUrl": "#",
-    "technologies": ["Symfony", "SQL & NoSQL", "API REST"],
+    "technologies": ["Symfony", "MySQL", "API REST"],
     "url": "#",
     "status": "disabled",
     "category": "app",
@@ -70,7 +70,7 @@
     "fullDescription": "Template de site vitrine responsive et moderne, conçu pour être facilement personnalisable et adapté aux besoins des petites entreprises et professionnels."
   },
   {
-    "id": 5,
+    "id": 6,
     "title": "Multitek",
     "description": "Développement d'un site vitrine avec formulaire de contact.",
     "image": "assets/images/AccueilMultiteK.png",
@@ -84,7 +84,7 @@
     "fullDescription": "Site vitrine avec formulaire de contact pour une entreprise de vente, réparation et location de matériel de manutention, conçu pour être facilement maintenable, responsive et moderne."
   },
   {
-    "id": 6,
+    "id": 7,
     "title": "ADE Pare-brise",
     "description": "Développement d'un site vitrine avec formulaire de contact.",
     "image": "assets/images/accueiladeparebrise.png",

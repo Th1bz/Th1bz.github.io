@@ -38,8 +38,15 @@ async function loadProjects() {
  * @returns {string} Le HTML du projet
  */
 function generateProjectHTML(project, className = "") {
-  // Gestion du bouton désactivé
-  const buttonState = project.status === "disabled" ? "disabled" : "";
+  // Gestion du bouton selon le statut du projet
+  const buttonHTML =
+    project.status === "disabled"
+      ? ""
+      : `<a href="${project.url}" 
+           class="btn btn-primary mt-3" 
+           target="_blank" 
+           rel="noopener noreferrer"
+        >Voir le projet</a>`;
 
   return `
     <div class="project-card ${className}" data-id="${project.id}">
@@ -54,12 +61,7 @@ function generateProjectHTML(project, className = "") {
                 .map((tech) => `<span>${tech}</span>`)
                 .join("")}
             </div>
-            <a href="${project.url}" 
-               class="btn btn-primary mt-3" 
-               target="_blank" 
-               rel="noopener noreferrer"
-               ${buttonState}
-            >Voir le projet</a>
+            ${buttonHTML}
           </div>
         </div>
       </div>
