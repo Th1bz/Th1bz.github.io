@@ -96,5 +96,19 @@
     "client": "ADE Pare-brise",
     "date": "Mars 2025",
     "fullDescription": "Site vitrine avec formulaire de contact pour une entreprise de réparation et de remplacement de pare-brise à domicile."
+  },
+  {
+    "id": 8,
+    "title": "Trombinoscope-Plugin WP",
+    "description": "Développement d'un plugin Wordpress pour générer et génrer les SVG du trombinoscope de l'entreprise.",
+    "image": "assets/images/accueilTrombinoscope-plugin.png",
+    "videoUrl": "assets/videos/trombinoscope-plugin-demo.mp4",
+    "technologies": ["Wordpress", "POO PHP", "JavaScript"],
+    "url": "#",
+    "status": "disabled",
+    "category": "plugin",
+    "client": "Humanis",
+    "date": "Novembre 2025",
+    "fullDescription": "Plugin Wordpress pour gérer le personnel de l'entreprise et générer dynamiquement sous format SVG (landscape et A3) le trombinoscope."
   }
 ]
