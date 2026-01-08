@@ -106,7 +106,7 @@
     "technologies": ["Wordpress", "POO PHP", "JavaScript"],
     "url": "#",
     "status": "disabled",
-    "category": "plugin",
+    "category": "Application",
     "client": "Humanis",
     "date": "Novembre 2025",
     "fullDescription": "Plugin Wordpress pour gérer le personnel de l'entreprise et générer dynamiquement sous format SVG (landscape et A3) le trombinoscope."
