@@ -60,8 +60,11 @@ async function generatePortfolioItems() {
     // Vider le conteneur existant
     portfolioContainer.innerHTML = "";
 
+    // Trier les projets par ID décroissant (les plus récents en premier)
+    const sortedProjects = [...projects].sort((a, b) => b.id - a.id);
+
     // Exemple d'implementation de projet
-    const portfolioHTML = projects
+    const portfolioHTML = sortedProjects
       .map((project, index) => {
         // Déterminer si l'élément doit être visible ou caché initialement
         const isVisible = index < visibleItems;
@@ -120,7 +123,7 @@ async function generatePortfolioItems() {
       .join("");
 
     portfolioContainer.innerHTML = portfolioHTML;
-    console.log(`${projects.length} projets générés dans le portfolio`);
+    console.log(`${sortedProjects.length} projets générés dans le portfolio`);
   } catch (error) {
     console.error(
       "Erreur lors de la génération des éléments du portfolio:",
@@ -402,6 +405,33 @@ function expandCard(cardElement, project) {
 }
 
 /**
+ * Vérifie si une URL vidéo est valide
+ * @param {string} videoUrl - L'URL de la vidéo à vérifier
+ * @returns {boolean} True si l'URL est valide, false sinon
+ */
+function isValidVideoUrl(videoUrl) {
+  // Vérifier que videoUrl existe, n'est pas vide, et n'est pas égal à "#"
+  if (!videoUrl || typeof videoUrl !== "string") {
+    return false;
+  }
+
+  const trimmedUrl = videoUrl.trim();
+
+  // Rejeter les valeurs invalides
+  if (trimmedUrl === "" || trimmedUrl === "#") {
+    return false;
+  }
+
+  // Accepter les URLs qui semblent valides (commencent par "assets/", "http://", "https://", ou "/")
+  return (
+    trimmedUrl.startsWith("assets/") ||
+    trimmedUrl.startsWith("http://") ||
+    trimmedUrl.startsWith("https://") ||
+    trimmedUrl.startsWith("/")
+  );
+}
+
+/**
  * Crée le contenu détaillé pour une carte agrandie
  * @param {Object} project - Les données du projet
  * @returns {HTMLElement} L'élément contenant les détails
@@ -409,6 +439,9 @@ function expandCard(cardElement, project) {
 function createDetailedContent(project) {
   const detailedContent = document.createElement("div");
   detailedContent.className = "portfolio-details";
+
+  // Déterminer si on affiche une vidéo ou une image
+  const hasValidVideo = isValidVideoUrl(project.videoUrl);
 
   // Créer le contenu HTML des détails
   detailedContent.innerHTML = `
@@ -433,7 +466,7 @@ function createDetailedContent(project) {
         <div class="details-body">
           <div class="details-gallery">
             ${
-              project.videoUrl
+              hasValidVideo
                 ? `
               <video class="details-video" controls autoplay muted loop playsinline>
                 <source src="${project.videoUrl}" type="video/mp4">

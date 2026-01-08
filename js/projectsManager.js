@@ -24,6 +24,8 @@ async function loadProjects() {
     }
 
     projectsData = await response.json();
+    // Trier les projets par ID décroissant (les plus récents en premier)
+    projectsData.sort((a, b) => b.id - a.id);
     return projectsData;
   } catch (error) {
     console.error("Erreur lors du chargement des projets:", error);
