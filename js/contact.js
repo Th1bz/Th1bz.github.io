@@ -3,31 +3,20 @@
  * Module de gestion du formulaire de contact et validation de l'email
  */
 
-// Initialisation d'EmailJS
-(function () {
-  emailjs.init("WtSDctCMaTZG5prkz");
-})();
-
-/**
- * Valide le format d'une adresse email
- * @param {string} email - L'adresse email à valider
- * @returns {boolean} - True si l'email est valide, sinon False
- */
 function isValidEmail(email) {
   return /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
 }
 
 /**
- * Initialise le formulaire de contact avec validation et envoi
+ * Initialise le formulaire de contact avec validation et envoi via PHP
  */
 function initContactForm() {
-  const emailInput = document.getElementById("email");
   const contactForm = document.getElementById("contactForm");
+  const emailInput = document.getElementById("email");
 
-  // Validation de l'email en temps réel
+  // Validation email en temps réel
   emailInput.addEventListener("input", function () {
     const emailGroup = this.closest(".form-group");
-
     if (this.value.length > 0) {
       if (isValidEmail(this.value)) {
         emailGroup.classList.remove("invalid");
@@ -44,9 +33,9 @@ function initContactForm() {
     }
   });
 
-  // Gestion de l'envoi du formulaire
-  contactForm.addEventListener("submit", function (event) {
-    event.preventDefault();
+  // Soumission du formulaire
+  contactForm.addEventListener("submit", function (e) {
+    e.preventDefault();
 
     if (!isValidEmail(emailInput.value)) {
       emailInput.closest(".form-group").classList.add("invalid");
@@ -57,41 +46,36 @@ function initContactForm() {
 
     const submitBtn = this.querySelector('button[type="submit"]');
     const originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML =
-      '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
     submitBtn.disabled = true;
 
-    const templateParams = {
-      from_name: document.getElementById("name").value,
-      from_email: emailInput.value,
-      subject: document.getElementById("subject").value,
-      message: document.getElementById("message").value,
-    };
+    const formData = new FormData(this);
 
-    emailjs
-      .send("service_devv5tf", "template_c1yqywd", templateParams)
-      .then(() => {
-        submitBtn.innerHTML = '<i class="fas fa-check"></i> Message envoyé !';
-        submitBtn.classList.replace("btn-primary", "btn-success");
-        contactForm.reset();
+    fetch("contact.php", {
+      method: "POST",
+      body: formData
+    })
+      .then(res => res.json())
+      .then(data => {
+        submitBtn.innerHTML = data.success
+          ? '<i class="fas fa-check"></i> Message envoyé !'
+          : '<i class="fas fa-exclamation-triangle"></i> Erreur lors de l\'envoi';
+        submitBtn.classList.replace("btn-primary", data.success ? "btn-success" : "btn-danger");
 
-        // Supprimer les classes de validation après réinitialisation
-        document.querySelectorAll(".form-group").forEach((group) => {
-          group.classList.remove("valid", "invalid");
-        });
+        if (data.success) contactForm.reset();
+
+        document.querySelectorAll(".form-group").forEach(group => group.classList.remove("valid", "invalid"));
 
         setTimeout(() => {
           submitBtn.innerHTML = originalText;
-          submitBtn.classList.replace("btn-success", "btn-primary");
+          submitBtn.classList.replace(data.success ? "btn-success" : "btn-danger", "btn-primary");
           submitBtn.disabled = false;
         }, 3000);
       })
-      .catch((error) => {
-        console.error("Erreur:", error);
-        submitBtn.innerHTML =
-          '<i class="fas fa-exclamation-triangle"></i> Erreur lors de l\'envoi';
+      .catch(err => {
+        console.error(err);
+        submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Erreur réseau';
         submitBtn.classList.replace("btn-primary", "btn-danger");
-
         setTimeout(() => {
           submitBtn.innerHTML = originalText;
           submitBtn.classList.replace("btn-danger", "btn-primary");
@@ -101,5 +85,5 @@ function initContactForm() {
   });
 }
 
-// Exporter les fonctions pour utilisation dans d'autres fichiers
+// Export
 export { isValidEmail, initContactForm };

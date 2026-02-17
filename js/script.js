@@ -1,8 +1,3 @@
-/**
- * Configuration initiale
- * Initialisation des variables globales
- */
-
 // Import des modules externes
 import { initContactForm } from "./contact.js";
 import { initProjectCarousel, initProjectCardFlip } from "./carrousel.js";

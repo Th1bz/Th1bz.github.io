@@ -1,40 +1,50 @@
+<?php
+// Infos de contact
+define('EMAIL_CONTACT', 'contact@winkelsass.fr');
+define('PHONE_CONTACT', '+33767184561');
+define('LOCALISATION', 'Strasbourg, France');
+
+// Réseaux sociaux
+define('LINKEDIN_URL', 'https://www.linkedin.com/in/thibault-winkelsass-a41248242');
+define('GITHUB_URL', 'https://github.com/Th1bz');
+
+// Nom du développeur
+define('DEV_NAME', 'Thibault Winkelsass');
+define('DEV_BRAND', 'Th1bz.');
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#150c29" />
     <!-- Pour Safari sur iOS -->
     <meta name="mobile-web-app-capable" content="yes" />
     <meta
-      name="apple-mobile-web-app-status-bar-style"
-      content="black-translucent"
-    />
+        name="apple-mobile-web-app-status-bar-style"
+        content="black-translucent" />
     <meta
-      name="description"
-      content="Portfolio de Thibault Winkelsass - Développeur Full Stack certifié niveau 5 (Bac+2) à Strasbourg. Création de sites web et applications sur mesure."
-    />
+        name="description"
+        content="Portfolio de Thibault Winkelsass - Développeur Full Stack certifié niveau 5 (Bac+2) à Strasbourg. Création de sites web et applications sur mesure." />
     <meta
-      name="keywords"
-      content="développeur web, full stack, portfolio, projets web, Strasbourg, Symfony, React, Node.js, PHP, JavaScript, développeur frontend, développeur backend, titre professionnel, RNCP"
-    />
+        name="keywords"
+        content="développeur web, full stack, portfolio, projets web, Strasbourg, Symfony, React, Node.js, PHP, JavaScript, développeur frontend, développeur backend, titre professionnel, RNCP" />
     <meta name="author" content="Thibault Winkelsass" />
     <meta name="robots" content="index, follow" />
     <meta
-      property="og:title"
-      content="Thibault Winkelsass - Développeur Full Stack à Strasbourg"
-    />
+        property="og:title"
+        content="Thibault Winkelsass - Développeur Full Stack à Strasbourg" />
     <meta
-      property="og:description"
-      content="Portfolio de Thibault Winkelsass - Développeur Full Stack - Création de sites web et applications sur mesure."
-    />
+        property="og:description"
+        content="Portfolio de Thibault Winkelsass - Développeur Full Stack - Création de sites web et applications sur mesure." />
     <meta property="og:type" content="website" />
     <title>Portfolio - Thibault Winkelsass - Développeur Full Stack</title>
     <!-- Bootstrap CSS -->
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+        rel="stylesheet" />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles/main.css" />
     <link rel="stylesheet" href="styles/fixed-elements.css" />
@@ -46,759 +56,755 @@
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png"> -->
     <!-- <link rel="icon" type="image/png" sizes="192x192"  href="assets/favicons/android-chrome-192x192.png"> -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="512x512"  href="assets/favicons/android-chrome-512x512.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/favicons/android-chrome-512x512.png">
     <!-- Font Awesome -->
     <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <!-- EmailJS -->
     <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
-    ></script>
-  </head>
-  
-  <body>
+        type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+
+<body>
     <!-- Social Links Fixed -->
     <div class="social-links-fixed">
-      <a href="https://www.linkedin.com/in/thibault-winkelsass-a41248242" target="_blank" rel="noopener noreferrer" class="social-link">
-        <i class="fab fa-linkedin"></i>
-      </a>
-      <a href="mailto:thibaultwks@gmail.com" class="social-link">
-        <i class="fas fa-envelope"></i>
-      </a>
-      <a href="tel:+33767184561" class="social-link">
-        <i class="fas fa-phone"></i>
-      </a>
+        <a href="<?php echo LINKEDIN_URL ?>" target="_blank" rel="noopener noreferrer" class="social-link">
+            <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="mailto:<?php echo EMAIL_CONTACT ?>" class="social-link">
+            <i class="fas fa-envelope"></i>
+        </a>
+        <a href="tel:<?php echo PHONE_CONTACT ?>" class="social-link">
+            <i class="fas fa-phone"></i>
+        </a>
     </div>
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="#accueil">Th1bz.</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="#accueil">Accueil</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#about">À propos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#projets">Projets</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#tarifs">Tarifs</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#contact">Contact</a>
-            </li>
-          </ul>
+        <div class="container">
+            <a class="navbar-brand" href="#accueil"><?php echo DEV_BRAND ?></a>
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#accueil">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">À propos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projets">Projets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#tarifs">Tarifs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="accueil" class="hero min-vh-100 d-flex align-items-center">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8">
-            <h1 class="display-1 fw-bold mb-3">
-              <span class="intro-text">Bonjour, je suis</span>
-              <span class="highlight">Winkelsass Thibault</span>
-            </h1>
-            <p class="lead mb-4">
-              Développeur Full Stack passionné par la création d'expériences web
-              modernes
-            </p>
-            <div class="cta-buttons">
-              <a href="#projets" class="btn btn-primary me-3">
-                <span>Voir mes projets</span>
-              </a>
-              </a>
-              <a href="#contact" class="btn btn-outline-primary">
-                <span>Me contacter</span>
-              </a>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h1 class="display-1 fw-bold mb-3">
+                        <span class="intro-text">Bonjour, je suis</span>
+                        <span class="highlight">Winkelsass Thibault</span>
+                    </h1>
+                    <p class="lead mb-4">
+                        Développeur Full Stack passionné par la création d'expériences web
+                        modernes
+                    </p>
+                    <div class="cta-buttons">
+                        <a href="#projets" class="btn btn-primary me-3">
+                            <span>Voir mes projets</span>
+                        </a>
+                        </a>
+                        <a href="#contact" class="btn btn-outline-primary">
+                            <span>Me contacter</span>
+                        </a>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </section>
 
     <!-- Section À propos -->
     <section id="about" class="about min-vh-100 d-flex align-items-center py-5">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 mb-4">
-            <h2 class="section-title">À propos de moi</h2>
-            <p class="about-text">
-              Titulaire du titre professionnel de niveau 5 "Développeur web et
-              web mobile", je suis passionné par le développement web et je crée
-              des solutions numériques innovantes en combinant créativité et
-              expertise technique. Mon approche est centrée sur la qualité du
-              code et l'expérience utilisateur.
-            </p>
-            <div class="learning-section mt-4">
-              <h3 class="learning-title mb-3">En cours d'apprentissage</h3>
-              <div class="learning-grid">
-                <div class="skill-item">
-                  <i class="fab fa-node-js"></i>
-                  <span>Node.js</span>
-                </div>
-                <div class="skill-item">
-                  <i class="fab fa-react"></i>
-                  <span>React</span>
-                </div>
-                <div class="skill-item">
-                  <i class="fab fa-css3"></i>
-                  <span>Tailwind CSS</span>
-                </div>
-                <div class="skill-item">
-                  <i class="fab fa-python"></i>
-                  <span>Python</span>
-                </div>
-                <div class="skill-item">
-                  <i class="fab fa-swift"></i>
-                  <span>Swift</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <h3 class="skills-title mb-4">Mes compétences</h3>
-            <div class="skills-container">
-              <div class="skill-category mb-4">
-                <h4>Frontend</h4>
-                <div class="skills-grid">
-                  <div class="skill-item">
-                    <i class="fab fa-html5"></i>
-                    <span>HTML5</span>
-                  </div>
-                  <div class="skill-item">
-                    <i class="fab fa-css3-alt"></i>
-                    <span>CSS3</span>
-                  </div>
-                  <div class="skill-item">
-                    <i class="fab fa-js"></i>
-                    <span>JavaScript</span>
-                  </div>
-                </div>
-              </div>
-              <div class="skill-category mb-4">
-                <h4>Backend</h4>
-                <div class="skills-grid">
-                  <div class="skill-item">
-                    <i class="fab fa-php"></i>
-                    <span>PHP</span>
-                  </div>
-                  <div class="skill-item">
-                    <i class="fas fa-server"></i>
-                    <span>API REST</span>
-                  </div>
-                </div>
-              </div>
-              <div class="skill-category mb-4">
-                <h4>Frameworks & CMS</h4>
-                <div class="skills-grid">
-                  <div class="skill-item">
-                    <i class="fab fa-bootstrap"></i>
-                    <span>Bootstrap</span>
-                  </div>
-                  <div class="skill-item">
-                    <i class="fab fa-symfony"></i>
-                    <span>Symfony</span>
-                  </div>
-                  <div class="skill-item">
-                    <i class="fab fa-wordpress"></i>
-                    <span>WordPress</span>
-                  </div>
-                </div>
-              </div>
-              <div class="skill-category">
-                <h4>Base de données & Outils</h4>
-                <div class="skills-grid">
-                  <div class="skill-item">
-                    <i class="fas fa-database"></i>
-                    <span>MySQL</span>
-                  </div>
-                  <div class="skill-item">
-                    <i class="fas fa-leaf"></i>
-                    <span>MongoDB</span>
-                  </div>
-                  <div class="skill-item">
-                    <i class="fab fa-git-alt"></i>
-                    <span>Git</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="certification-section mt-5">
-          <div class="certification-badge">
-            <div class="row align-items-center">
-              <!-- Logo STUDI à gauche -->
-              <div
-                class="col-12 col-md-3 order-1 order-md-1 text-center text-md-start"
-              >
-                <a
-                  href="https://www.studi.com/fr/formation/developpement-web/graduate-developpeur-front-end/"
-                  target="_blank"
-                  class="text-decoration-none"
-                >
-                  <img
-                    src="assets/Studi_logo.svg"
-                    alt="Logo STUDI"
-                    class="certification-logo"
-                  />
-                </a>
-              </div>
-              <!-- Logo République française à droite -->
-              <div
-                class="col-12 col-md-3 order-3 order-md-3 text-center text-md-end"
-              >
-                <a
-                  href="https://www.francecompetences.fr/recherche/rncp/37674/"
-                  target="_blank"
-                  class="text-decoration-none"
-                >
-                  <img
-                    src="assets/logo_republique-francaise.png"
-                    alt="Logo République française"
-                    class="certification-logo"
-                  />
-                </a>
-              </div>
-              <!-- Texte de certification au centre -->
-              <div class="col-12 col-md-6 order-2 order-md-2 text-center">
-                <div class="certification-text mt-5">
-                  <h4>Certification</h4>
-                  <a
-                    href="https://www.francecompetences.fr/recherche/rncp/37674/"
-                    target="_blank"
-                    class="text-decoration-none"
-                  >
-                    <p>
-                      Titre Professionnel Niveau 5 (Bac+2) - Développeur Web et
-                      Web Mobile
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <h2 class="section-title">À propos de moi</h2>
+                    <p class="about-text">
+                        Titulaire du titre professionnel de niveau 5 "Développeur web et
+                        web mobile", je suis passionné par le développement web et je crée
+                        des solutions numériques innovantes en combinant créativité et
+                        expertise technique. Mon approche est centrée sur la qualité du
+                        code et l'expérience utilisateur.
                     </p>
-                    <p>Code de la fiche : RNCP37674</p>
-                  </a>
-                  <p class="certification-date">Obtenu en février 2025</p>
+                    <p class="about-text">
+                        Grâce à ma propre infrastructure d’hébergement sur VPS administrée via Plesk,
+                        je maîtrise entièrement l’environnement technique de chaque projet.
+                        Cette autonomie me permet d’assurer un déploiement fiable et rapide,
+                        la gestion des certificats SSL et des emails professionnels,
+                        ainsi que la supervision, la sécurisation et la maintenance continue du serveur,
+                        garantissant performance, stabilité et protection des données.
+                    </p>
+
+                    <div class="learning-section mt-4">
+                        <h3 class="learning-title mb-3">En cours d'apprentissage</h3>
+                        <div class="learning-grid">
+                            <div class="skill-item">
+                                <i class="fab fa-node-js"></i>
+                                <span>Node.js</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-react"></i>
+                                <span>React</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-css3"></i>
+                                <span>Tailwind CSS</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-python"></i>
+                                <span>Python</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-swift"></i>
+                                <span>Swift</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
+                <div class="col-lg-6">
+                    <h3 class="skills-title mb-4">Mes compétences</h3>
+                    <div class="skills-container">
+                        <div class="skill-category mb-4">
+                            <h4>Frontend</h4>
+                            <div class="skills-grid">
+                                <div class="skill-item">
+                                    <i class="fab fa-html5"></i>
+                                    <span>HTML5</span>
+                                </div>
+                                <div class="skill-item">
+                                    <i class="fab fa-css3-alt"></i>
+                                    <span>CSS3</span>
+                                </div>
+                                <div class="skill-item">
+                                    <i class="fab fa-js"></i>
+                                    <span>JavaScript</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-category mb-4">
+                            <h4>Backend</h4>
+                            <div class="skills-grid">
+                                <div class="skill-item">
+                                    <i class="fab fa-php"></i>
+                                    <span>PHP</span>
+                                </div>
+                                <div class="skill-item">
+                                    <i class="fas fa-server"></i>
+                                    <span>API REST</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-category mb-4">
+                            <h4>Frameworks & CMS</h4>
+                            <div class="skills-grid">
+                                <div class="skill-item">
+                                    <i class="fab fa-bootstrap"></i>
+                                    <span>Bootstrap</span>
+                                </div>
+                                <div class="skill-item">
+                                    <i class="fab fa-symfony"></i>
+                                    <span>Symfony</span>
+                                </div>
+                                <div class="skill-item">
+                                    <i class="fab fa-wordpress"></i>
+                                    <span>WordPress</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Base de données & Outils</h4>
+                            <div class="skills-grid">
+                                <div class="skill-item">
+                                    <i class="fas fa-database"></i>
+                                    <span>MySQL</span>
+                                </div>
+                                <div class="skill-item">
+                                    <i class="fas fa-leaf"></i>
+                                    <span>MongoDB</span>
+                                </div>
+                                <div class="skill-item">
+                                    <i class="fab fa-git-alt"></i>
+                                    <span>Git</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
+            <div class="certification-section mt-5">
+                <div class="certification-badge">
+                    <div class="row align-items-center">
+                        <!-- Logo STUDI à gauche -->
+                        <div
+                            class="col-12 col-md-3 order-1 order-md-1 text-center text-md-start">
+                            <a
+                                href="https://www.studi.com/fr/formation/developpement-web/graduate-developpeur-front-end/"
+                                target="_blank"
+                                class="text-decoration-none">
+                                <img
+                                    src="assets/Studi_logo.svg"
+                                    alt="Logo STUDI"
+                                    class="certification-logo" />
+                            </a>
+                        </div>
+                        <!-- Logo République française à droite -->
+                        <div
+                            class="col-12 col-md-3 order-3 order-md-3 text-center text-md-end">
+                            <a
+                                href="https://www.francecompetences.fr/recherche/rncp/37674/"
+                                target="_blank"
+                                class="text-decoration-none">
+                                <img
+                                    src="assets/logo_republique-francaise.png"
+                                    alt="Logo République française"
+                                    class="certification-logo" />
+                            </a>
+                        </div>
+                        <!-- Texte de certification au centre -->
+                        <div class="col-12 col-md-6 order-2 order-md-2 text-center">
+                            <div class="certification-text mt-5">
+                                <h4>Certification</h4>
+                                <a
+                                    href="https://www.francecompetences.fr/recherche/rncp/37674/"
+                                    target="_blank"
+                                    class="text-decoration-none">
+                                    <p>
+                                        Titre Professionnel Niveau 5 (Bac+2) - Développeur Web et
+                                        Web Mobile
+                                    </p>
+                                    <p>Code de la fiche : RNCP37674</p>
+                                </a>
+                                <p class="certification-date">Obtenu en février 2025</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
     <!-- Section Projets -->
     <section
-      id="projets"
-      class="projects min-vh-100 d-flex align-items-center py-5"
-    >
-      <div class="container">
-        <h2 class="section-title text-center mb-5">Mes Projets</h2>
-        <p class="text-center mb-4 project-instruction">
-          <i class="fas fa-hand-pointer me-2"></i>
-          Cliquez sur un projet pour découvrir plus de détails
-        </p>
+        id="projets"
+        class="projects min-vh-100 d-flex align-items-center py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Mes Projets</h2>
+            <p class="text-center mb-4 project-instruction">
+                <i class="fas fa-hand-pointer me-2"></i>
+                Cliquez sur un projet pour découvrir plus de détails
+            </p>
 
-        <div class="project-carousel">
-          <div class="carousel-container">
-            <!-- Le contenu des projets est généré dynamiquement par JavaScript -->
-          </div>
+            <div class="project-carousel">
+                <div class="carousel-container">
+                    <!-- Le contenu des projets est généré dynamiquement par JavaScript -->
+                </div>
 
-          <div class="carousel-controls">
-            <div class="navigation-buttons">
-              <button class="control-prev">
-                <i class="fas fa-chevron-left"></i>
-              </button>
-              <button class="control-next">
-                <i class="fas fa-chevron-right"></i>
-              </button>
+                <div class="carousel-controls">
+                    <div class="navigation-buttons">
+                        <button class="control-prev">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="control-next">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    <!-- Les indicateurs sont insérés ici par JavaScript -->
+                </div>
             </div>
-            <!-- Les indicateurs sont insérés ici par JavaScript -->
-          </div>
         </div>
-      </div>
     </section>
 
     <!-- Section Portfolio Détaillé -->
     <section id="portfolio" class="portfolio py-1">
-      <div class="container">
-        <!-- <h2 class="section-title text-center mb-5">Portfolio Détaillé</h2> -->
+        <div class="container">
+            <!-- <h2 class="section-title text-center mb-5">Portfolio Détaillé</h2> -->
 
-        <!-- Filtres de catégories -->
-        <div class="portfolio-filters text-center mb-5">
-          <div class="filter-buttons">
-            <button class="filter-btn" data-filter="none"><i class="fas fa-times"></i></button>
-            <button class="filter-btn active" data-filter="all">Tous</button>
-            <button class="filter-btn" data-filter="web">Sites Web</button>
-            <button class="filter-btn" data-filter="app">Applications</button>
-            <!-- <button class="filter-btn" data-filter="ecommerce">
+            <!-- Filtres de catégories -->
+            <div class="portfolio-filters text-center mb-5">
+                <div class="filter-buttons">
+                    <button class="filter-btn" data-filter="none"><i class="fas fa-times"></i></button>
+                    <button class="filter-btn active" data-filter="all">Tous</button>
+                    <button class="filter-btn" data-filter="web">Sites Web</button>
+                    <button class="filter-btn" data-filter="app">Applications</button>
+                    <!-- <button class="filter-btn" data-filter="ecommerce">
               E-commerce
             </button>
             <button class="filter-btn" data-filter="design">
               Design UI/UX
             </button> -->
-          </div>
-        </div>
-
-        <!-- Grille de projets filtrables -->
-        <div class="portfolio-grid">
-          <div class="row g-4" id="portfolio-items">
-            <!-- Les éléments du portfolio sont générés dynamiquement par JavaScript -->
-            <!-- Voici un exemple de structure pour chaque élément -->
-            <div class="col-md-6 col-lg-4 portfolio-item" data-category="web">
-              <div class="portfolio-card">
-                <div class="portfolio-img">
-                  <img
-                    src="assets/projects/placeholder.svg"
-                    alt="Projet exemple"
-                    class="img-fluid"
-                  />
-                  <div class="portfolio-overlay">
-                    <div class="portfolio-buttons">
-                      <a href="#" class="view-details"
-                        ><i class="fas fa-eye"></i
-                      ></a>
-                      <a href="#" target="_blank" class="view-live"
-                        ><i class="fas fa-external-link-alt"></i
-                      ></a>
-                    </div>
-                  </div>
                 </div>
-                <div class="portfolio-info">
-                  <h4 class="portfolio-title">Titre du projet</h4>
-                  <p class="portfolio-category">Catégorie</p>
-                  <div class="portfolio-tech">
-                    <span>HTML</span>
-                    <span>CSS</span>
-                    <span>JS</span>
-                  </div>
-                </div>
-              </div>
             </div>
-          </div>
-        </div>
 
-        <!-- Pagination -->
-        <div class="portfolio-pagination text-center mt-5">
-          <button class="pagination-btn" id="load-more">
-            <span>Voir plus</span> <i class="fas fa-arrow-down"></i>
-          </button>
+            <!-- Grille de projets filtrables -->
+            <div class="portfolio-grid">
+                <div class="row g-4" id="portfolio-items">
+                    <!-- Les éléments du portfolio sont générés dynamiquement par JavaScript -->
+                    <!-- Voici un exemple de structure pour chaque élément -->
+                    <div class="col-md-6 col-lg-4 portfolio-item" data-category="web">
+                        <div class="portfolio-card">
+                            <div class="portfolio-img">
+                                <img
+                                    src="assets/projects/placeholder.svg"
+                                    alt="Projet exemple"
+                                    class="img-fluid" />
+                                <div class="portfolio-overlay">
+                                    <div class="portfolio-buttons">
+                                        <a href="#" class="view-details"><i class="fas fa-eye"></i></a>
+                                        <a href="#" target="_blank" class="view-live"><i class="fas fa-external-link-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="portfolio-info">
+                                <h4 class="portfolio-title">Titre du projet</h4>
+                                <p class="portfolio-category">Catégorie</p>
+                                <div class="portfolio-tech">
+                                    <span>HTML</span>
+                                    <span>CSS</span>
+                                    <span>JS</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="portfolio-pagination text-center mt-5">
+                <button class="pagination-btn" id="load-more">
+                    <span>Voir plus</span> <i class="fas fa-arrow-down"></i>
+                </button>
+            </div>
         </div>
-      </div>
     </section>
 
     <!-- Section Tarifs -->
     <section
-      id="tarifs"
-      class="pricing min-vh-100 d-flex align-items-center py-5"
-    >
-      <div class="container">
-        <h2 class="section-title text-center mb-5">Tarifs & Prestations</h2>
-        <p class="text-center mb-5 pricing-disclaimer">
-          Les tarifs présentés ci-dessous sont fournis à titre indicatif pour vous donner un ordre de grandeur. 
-          Chaque projet étant unique, n'hésitez pas à me contacter pour obtenir un devis personnalisé 
-          et adapté précisément à vos besoins.
-        </p>
-        <div class="row g-4">
-          <!-- Site Vitrine -->
-          <div class="col-lg-3 col-md-6">
-            <div class="pricing-card">
-              <div class="pricing-header">
-                <i class="fab fa-html5"></i>
-                <h3>Site Vitrine</h3>
-                <p class="package-type">Une page Web sur mesure</p>
-              </div>
-              <div class="pricing-price">
-                <span class="price-from">À partir de</span>
-                <span class="amount">400€</span>
-                <span class="period">HT</span>
-              </div>
-              <div class="pricing-features">
-                <ul>
-                  <li><i class="fas fa-check"></i>Thème personnalisé</li>
-                  <li><i class="fas fa-check"></i>Design responsive</li>
-                  <li><i class="fas fa-check"></i>Formulaire de contact</li>
-                  <li><i class="fas fa-check"></i>Optimisation SEO</li>
-                </ul>
-              </div>
-              <a href="#contact" class="btn btn-primary">
-                <span>Me contacter</span>
-              </a>
-            </div>
-          </div>
+        id="tarifs"
+        class="pricing min-vh-100 d-flex align-items-center py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Tarifs & Prestations</h2>
+            <p class="text-center mb-5 pricing-disclaimer">
+                Les tarifs présentés ci-dessous sont donnés à titre indicatif afin de vous fournir un premier repère budgétaire.
+                Chaque projet étant unique, n'hésitez pas à me contacter pour obtenir un devis personnalisé
+                et adapté précisément à vos besoins. <br><br>
+                En tant qu’auto-entrepreneur, les prix sont indiqués hors taxes (TVA non applicable, <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048826700/2025-01-01/" target="_blank" rel="noopener noreferrer">article 293 B</a> du Code général des impôts).
+            </p>
+            <div class="row g-4">
+                <!-- Site Vitrine -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <i class="fab fa-html5"></i>
+                            <h3>Site Vitrine</h3>
+                            <p class="package-type">Présence Web sur mesure</p>
+                        </div>
+                        <div class="pricing-price">
+                            <span class="price-from">À partir de</span>
+                            <span class="amount">400€</span>
+                            <span class="period">HT</span>
+                        </div>
+                        <div class="pricing-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i>Thème personnalisé</li>
+                                <li><i class="fas fa-check"></i>Design responsive</li>
+                                <li><i class="fas fa-check"></i>Formulaire de contact</li>
+                                <li><i class="fas fa-check"></i>Optimisation SEO</li>
+                            </ul>
+                        </div>
+                        <a href="#contact" class="btn btn-primary">
+                            <span>Me contacter</span>
+                        </a>
+                    </div>
+                </div>
 
-          <!-- Site E-commerce -->
-          <div class="col-lg-3 col-md-6">
-            <div class="pricing-card">
-              <div class="pricing-header">
-                <i class="fas fa-shopping-cart"></i>
-                <h3>E-commerce</h3>
-                <p class="package-type">WooCommerce/Shopify</p>
-              </div>
-              <div class="pricing-price">
-                <span class="price-from">À partir de</span>
-                <span class="amount">1200€</span>
-                <span class="period">HT</span>
-              </div>
-              <div class="pricing-features">
-                <ul>
-                  <li><i class="fas fa-check"></i>Catalogue produits</li>
-                  <li><i class="fas fa-check"></i>Système de paiement</li>
-                  <li><i class="fas fa-check"></i>Gestion des stocks</li>
-                  <li><i class="fas fa-check"></i>Panel administration</li>
-                  <li><i class="fas fa-check"></i>Emails automatiques</li>
-                  <li><i class="fas fa-check"></i>Formation complète</li>
-                </ul>
-              </div>
-              <a href="#contact" class="btn btn-primary">
-                <span>Me contacter</span>
-              </a>
-            </div>
-          </div>
+                <!-- Site E-commerce -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <i class="fas fa-shopping-cart"></i>
+                            <h3>E-commerce</h3>
+                            <p class="package-type">WooCommerce/Shopify</p>
+                        </div>
+                        <div class="pricing-price">
+                            <span class="price-from">À partir de</span>
+                            <span class="amount">1200€</span>
+                            <span class="period">HT</span>
+                        </div>
+                        <div class="pricing-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i>Catalogue produits</li>
+                                <li><i class="fas fa-check"></i>Système de paiement</li>
+                                <li><i class="fas fa-check"></i>Gestion des stocks</li>
+                                <li><i class="fas fa-check"></i>Panel administration</li>
+                                <li><i class="fas fa-check"></i>Emails automatiques</li>
+                                <li><i class="fas fa-check"></i>Formation complète</li>
+                            </ul>
+                        </div>
+                        <a href="#contact" class="btn btn-primary">
+                            <span>Me contacter</span>
+                        </a>
+                    </div>
+                </div>
 
-          <!-- Application Web -->
-          <div class="col-lg-3 col-md-6">
-            <div class="pricing-card featured">
-              <div class="pricing-header">
-                <i class="fas fa-laptop-code"></i>
-                <h3>Application Web</h3>
-                <p class="package-type">Sur Mesure</p>
-              </div>
-              <div class="pricing-price">
-                <span class="price-from">À partir de</span>
-                <span class="amount">1500€</span>
-                <span class="period">HT</span>
-              </div>
-              <div class="pricing-features">
-                <ul>
-                  <li><i class="fas fa-check"></i>Architecture sur mesure</li>
-                  <li><i class="fas fa-check"></i>Base de données</li>
-                  <li><i class="fas fa-check"></i>API REST</li>
-                  <li><i class="fas fa-check"></i>Authentification</li>
-                  <li><i class="fas fa-check"></i>Tests automatisés</li>
-                  <li><i class="fas fa-check"></i>Déploiement inclus</li>
-                </ul>
-              </div>
-              <a href="#contact" class="btn btn-primary">
-                <span>Me contacter</span>
-              </a>
-            </div>
-          </div>
+                <!-- Application Web -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="pricing-card featured">
+                        <div class="pricing-header">
+                            <i class="fas fa-laptop-code"></i>
+                            <h3>Application Web</h3>
+                            <p class="package-type">Sur Mesure</p>
+                        </div>
+                        <div class="pricing-price">
+                            <span class="price-from">À partir de</span>
+                            <span class="amount">1500€</span>
+                            <span class="period">HT</span>
+                        </div>
+                        <div class="pricing-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i>Architecture sur mesure</li>
+                                <li><i class="fas fa-check"></i>Base de données</li>
+                                <!-- <li><i class="fas fa-check"></i>API REST</li> -->
+                                <li><i class="fas fa-check"></i>Authentification</li>
+                                <li><i class="fas fa-check"></i>Tests automatisés</li>
+                                <li><i class="fas fa-check"></i>Déploiement inclus</li>
+                            </ul>
+                        </div>
+                        <a href="#contact" class="btn btn-primary">
+                            <span>Me contacter</span>
+                        </a>
+                    </div>
+                </div>
 
-          <!-- Maintenance -->
-          <div class="col-lg-3 col-md-6">
-            <div class="pricing-card">
-              <div class="pricing-header">
-                <i class="fas fa-tools"></i>
-                <h3>Maintenance</h3>
-                <p class="package-type">Support & Évolution</p>
-              </div>
-              <div class="pricing-price">
-                <span class="price-from">À partir de</span>
-                <span class="amount">100€</span>
-                <span class="period">HT/mois</span>
-              </div>
-              <div class="pricing-features">
-                <ul>
-                  <li><i class="fas fa-check"></i>Mises à jour sécurité</li>
-                  <!-- <li><i class="fas fa-check"></i>Sauvegardes</li> -->
-                  <li><i class="fas fa-check"></i>Monitoring 24/7</li>
-                  <li><i class="fas fa-check"></i>Support technique</li>
-                  <li><i class="fas fa-check"></i>Modifications mineures</li>
-                  <!-- <li><i class="fas fa-check"></i>Rapport mensuel</li> -->
-                </ul>
-              </div>
-              <a href="#contact" class="btn btn-primary">
-                <span>Me contacter</span>
-              </a>
+                <!-- Maintenance -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <i class="fas fa-tools"></i>
+                            <h3>Hébergement</h3>
+                            <p class="package-type">Support & Évolution</p>
+                        </div>
+                        <div class="pricing-price">
+                            <span class="price-from">À partir de</span>
+                            <span class="amount">20€</span>
+                            <span class="period">HT/mois</span>
+                        </div>
+                        <div class="pricing-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i>Hébergement</li>
+                                <li><i class="fas fa-check"></i>Mises à jour sécurité</li>
+                                <li><i class="fas fa-check"></i>Sauvegardes</li>
+                                <!-- <li><i class="fas fa-check"></i>Monitoring 24/7</li> -->
+                                <li><i class="fas fa-check"></i>Support technique</li>
+                                <li><i class="fas fa-check"></i>Modifications mineures <br>(30 min / mois incluses)</li>
+                                <!-- <li><i class="fas fa-check"></i>Rapport mensuel</li> -->
+                            </ul>
+
+                            <!-- Séparateur -->
+                            <div class="separator my-3"></div>
+                            
+                            <!-- Mention facturation -->
+                            <div class="extra-work-note">
+                                <small>
+                                    Toute demande supplémentaire est facturée au taux horaire en vigueur.
+                                </small>
+                            </div>
+                        </div>
+                        <a href="#contact" class="btn btn-primary">
+                            <span>Me contacter</span>
+                        </a>
+                    </div>
+                </div>
             </div>
-          </div>
+
+            <!-- Note supplémentaire -->
+            <div class="pricing-note text-center mt-5">
+                <p>Tous les projets incluent :</p>
+                <div class="included-features">
+                    <span><i class="fas fa-mobile-alt"></i> Design Responsive</span>
+                    <span><i class="fas fa-tachometer-alt"></i> Performance</span>
+                    <span><i class="fas fa-shield-alt"></i> Sécurité</span>
+                    <span><i class="fas fa-search"></i> SEO</span>
+                </div>
+            </div>
+
+            <!-- Taux Journaliers -->
+            <div class="daily-rates mt-5">
+                <h3 class="text-center mb-4">Taux Journaliers</h3>
+                <div class="row g-4">
+                    <!-- Front-end -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="rate-card">
+                            <div class="rate-header">
+                                <i class="fas fa-code"></i>
+                                <h4>Front-end</h4>
+                            </div>
+                            <div class="rate-price">
+                                <span class="amount">180€</span>
+                                <span class="period">HT/Jour</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Back-end -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="rate-card">
+                            <div class="rate-header">
+                                <i class="fas fa-database"></i>
+                                <h4>Back-end</h4>
+                            </div>
+                            <div class="rate-price">
+                                <span class="amount">200€</span>
+                                <span class="period">HT/Jour</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Full Stack -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="rate-card featured">
+                            <div class="rate-header">
+                                <i class="fas fa-layer-group"></i>
+                                <h4>Full Stack</h4>
+                            </div>
+                            <div class="rate-price">
+                                <span class="amount">220€</span>
+                                <span class="period">HT/Jour</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Support -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="rate-card">
+                            <div class="rate-header">
+                                <i class="fas fa-headset"></i>
+                                <h4>Support</h4>
+                            </div>
+                            <div class="rate-price">
+                                <span class="amount">100€</span>
+                                <span class="period">HT/Jour</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center medium mt-4">
+                Les taux journaliers sont basés sur une journée standard de 8 heures.
+            </p>
         </div>
-
-        <!-- Note supplémentaire -->
-        <div class="pricing-note text-center mt-5">
-          <p>Tous les projets incluent :</p>
-          <div class="included-features">
-            <span><i class="fas fa-mobile-alt"></i> Design Responsive</span>
-            <span
-              ><i class="fas fa-tachometer-alt"></i> Optimisation
-              Performance</span
-            >
-            <span><i class="fas fa-shield-alt"></i> Sécurité Renforcée</span>
-            <span><i class="fas fa-search"></i> SEO de base</span>
-          </div>
-        </div>
-
-        <!-- Taux Journaliers -->
-        <div class="daily-rates mt-5">
-          <h3 class="text-center mb-4">Taux Journaliers</h3>
-          <div class="row g-4">
-            <!-- Front-end -->
-            <div class="col-lg-3 col-md-6">
-              <div class="rate-card">
-                <div class="rate-header">
-                  <i class="fas fa-code"></i>
-                  <h4>Front-end</h4>
-                </div>
-                <div class="rate-price">
-                  <span class="amount">150€</span>
-                  <span class="period">HT/Jour</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Back-end -->
-            <div class="col-lg-3 col-md-6">
-              <div class="rate-card">
-                <div class="rate-header">
-                  <i class="fas fa-database"></i>
-                  <h4>Back-end</h4>
-                </div>
-                <div class="rate-price">
-                  <span class="amount">180€</span>
-                  <span class="period">HT/Jour</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Full Stack -->
-            <div class="col-lg-3 col-md-6">
-              <div class="rate-card featured">
-                <div class="rate-header">
-                  <i class="fas fa-layer-group"></i>
-                  <h4>Full Stack</h4>
-                </div>
-                <div class="rate-price">
-                  <span class="amount">150€</span>
-                  <span class="period">HT/Jour</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Support -->
-            <div class="col-lg-3 col-md-6">
-              <div class="rate-card">
-                <div class="rate-header">
-                  <i class="fas fa-headset"></i>
-                  <h4>Support</h4>
-                </div>
-                <div class="rate-price">
-                  <span class="amount">100€</span>
-                  <span class="period">HT/Jour</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
 
     <!-- Section Contact -->
     <section
-      id="contact"
-      class="contact min-vh-100 d-flex align-items-center py-5"
-    >
-      <div class="container">
-        <h2 class="section-title text-center mb-5">Me Contacter</h2>
+        id="contact"
+        class="contact min-vh-100 d-flex align-items-center py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Me Contacter</h2>
 
-        <div class="row justify-content-center">
-          <div class="col-lg-8">
-            <form id="contactForm" class="contact-form">
-              <div class="row g-4">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="name"
-                      name="name"
-                      placeholder=""
-                      required
-                    />
-                    <label for="name">Nom</label>
-                  </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <form id="contactForm" class="contact-form">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="name"
+                                        name="name"
+                                        placeholder=""
+                                        required />
+                                    <label for="name">Nom</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input
+                                        type="email"
+                                        class="form-control"
+                                        id="email"
+                                        name="email"
+                                        placeholder=""
+                                        required />
+                                    <label for="email">Email</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="subject"
+                                        name="subject"
+                                        placeholder=""
+                                        required />
+                                    <label for="subject">Sujet</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <textarea
+                                        class="form-control"
+                                        id="message"
+                                        name="message"
+                                        rows="6"
+                                        placeholder=""
+                                        required></textarea>
+                                    <label for="message">Message</label>
+                                </div>
+                            </div>
+                            <div class="col-12 text-center">
+                                <button type="submit" class="btn btn-primary">
+                                    <span>Envoyer le message</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <input
-                      type="email"
-                      class="form-control"
-                      id="email"
-                      name="email"
-                      placeholder=""
-                      required
-                    />
-                    <label for="email">Email</label>
-                  </div>
-                </div>
-                <div class="col-12">
-                  <div class="form-group">
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="subject"
-                      name="subject"
-                      placeholder=""
-                      required
-                    />
-                    <label for="subject">Sujet</label>
-                  </div>
-                </div>
-                <div class="col-12">
-                  <div class="form-group">
-                    <textarea
-                      class="form-control"
-                      id="message"
-                      name="message"
-                      rows="6"
-                      placeholder=""
-                      required
-                    ></textarea>
-                    <label for="message">Message</label>
-                  </div>
-                </div>
-                <div class="col-12 text-center">
-                  <button type="submit" class="btn btn-primary">
-                    <span>Envoyer le message</span>
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
+            </div>
 
-        <div class="contact-info mt-5">
-          <div class="row justify-content-center text-center g-4">
-            <div class="col-md-4">
-              <div class="contact-info-item">
-                <i class="fas fa-map-marker-alt"></i>
-                <h3>Localisation</h3>
-                <p>Strasbourg, France</p>
-              </div>
+            <div class="contact-info mt-5">
+                <div class="row justify-content-center text-center g-4">
+                    <div class="col-md-4">
+                        <div class="contact-info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h3>Localisation</h3>
+                            <p><?php echo LOCALISATION ?></p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="contact-info-item">
+                            <i class="fas fa-phone"></i>
+                            <h3>Téléphone</h3>
+                            <p>Laissez moi un message Vocal ou SMS au :</p>
+                            <p><a href="tel:<?php echo PHONE_CONTACT ?>"><?php echo PHONE_CONTACT ?></a></p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="contact-info-item">
+                            <i class="fas fa-envelope"></i>
+                            <h3>Email</h3>
+                            <p>
+                                <a href="mailto:<?php echo EMAIL_CONTACT ?>"><?php echo EMAIL_CONTACT ?></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-4">
-              <div class="contact-info-item">
-                <i class="fas fa-phone"></i>
-                <h3>Téléphone</h3>
-                <p>Laissez moi un message Vocal ou SMS au :</p>
-                <p><a href="tel:+33767184561">+33 7 67 18 45 61</a></p>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="contact-info-item">
-                <i class="fas fa-envelope"></i>
-                <h3>Email</h3>
-                <p>
-                  <a href="mailto:thibaultwks@gmail.com"
-                    >thibaultwks@gmail.com</a
-                  >
-                </p>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer py-5">
-      <div class="container">
-        <div class="row gy-4">
-          <!-- Logo et Description -->
-          <div class="col-lg-4">
-            <div class="footer-brand mb-3">Th1bz.</div>
-            <p class="footer-description">
-              Développeur Full Stack passionné par la création d'expériences web
-              modernes et innovantes.
-            </p>
-            <div class="social-links mt-4">
-              <a
-                href="https://github.com/Th1bz"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i class="fab fa-github"></i>
-              </a>
-              <a
-                href="https://www.linkedin.com/in/thibault-winkelsass-a41248242"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i class="fab fa-linkedin"></i>
-              </a>
-              <a href="mailto:thibaultwks@gmail.com">
-                <i class="fas fa-envelope"></i>
-              </a>
+        <div class="container">
+            <div class="row gy-4">
+                <!-- Logo et Description -->
+                <div class="col-lg-4">
+                    <div class="footer-brand mb-3">Th1bz.</div>
+                    <p class="footer-description">
+                        Développeur Full Stack passionné par la création d'expériences web
+                        modernes et innovantes.
+                    </p>
+                    <div class="social-links mt-4">
+                        <a
+                            href="<?php echo GITHUB_URL ?>"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a
+                            href="<?php echo LINKEDIN_URL ?>"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="mailto:<?php echo EMAIL_CONTACT ?>">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Navigation Rapide -->
+                <div class="col-lg-4">
+                    <h5 class="footer-title">Navigation</h5>
+                    <ul class="footer-links">
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#about">À propos</a></li>
+                        <li><a href="#projets">Projets</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#tarifs">Tarifs</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div class="col-lg-4">
+                    <h5 class="footer-title">Contact</h5>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span><?php echo LOCALISATION ?></span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:<?php echo EMAIL_CONTACT ?>"><?php echo EMAIL_CONTACT ?></a>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:<?php echo PHONE_CONTACT ?>"><?php echo PHONE_CONTACT ?></a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-          </div>
 
-          <!-- Navigation Rapide -->
-          <div class="col-lg-4">
-            <h5 class="footer-title">Navigation</h5>
-            <ul class="footer-links">
-              <li><a href="#accueil">Accueil</a></li>
-              <li><a href="#about">À propos</a></li>
-              <li><a href="#projets">Projets</a></li>
-              <li><a href="#portfolio">Portfolio</a></li>
-              <li><a href="#tarifs">Tarifs</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-          </div>
-
-          <!-- Contact -->
-          <div class="col-lg-4">
-            <h5 class="footer-title">Contact</h5>
-            <ul class="footer-contact">
-              <li>
-                <i class="fas fa-map-marker-alt"></i>
-                <span>Strasbourg, France</span>
-              </li>
-              <li>
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:thibaultwks@gmail.com">thibaultwks@gmail.com</a>
-              </li>
-              <li>
-                <i class="fas fa-phone"></i>
-                <a href="tel:+33767184561">+33 7 67 18 45 61</a>
-              </li>
-            </ul>
-          </div>
+            <!-- Copyright -->
+            <div class="footer-bottom text-center mt-5">
+                <div class="copyright">
+                    © 2024 Thibault Winkelsass. Tous droits réservés.
+                </div>
+                <div class="tech-stack mt-2">
+                    <span>Réalisé avec</span>
+                    <i class="fab fa-html5" title="HTML5"></i>
+                    <i class="fab fa-css3-alt" title="CSS3"></i>
+                    <i class="fab fa-js" title="JavaScript"></i>
+                    <i class="fab fa-bootstrap" title="Bootstrap"></i>
+                </div>
+            </div>
         </div>
-
-        <!-- Copyright -->
-        <div class="footer-bottom text-center mt-5">
-          <div class="copyright">
-            © 2024 Thibault Winkelsass. Tous droits réservés.
-          </div>
-          <div class="tech-stack mt-2">
-            <span>Réalisé avec</span>
-            <i class="fab fa-html5" title="HTML5"></i>
-            <i class="fab fa-css3-alt" title="CSS3"></i>
-            <i class="fab fa-js" title="JavaScript"></i>
-            <i class="fab fa-bootstrap" title="Bootstrap"></i>
-          </div>
-        </div>
-      </div>
     </footer>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./js/fixed-elements.js"></script>
     <script src="./js/script.js" type="module"></script>
-  </body>
+</body>
+
 </html>

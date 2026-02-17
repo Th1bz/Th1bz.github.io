@@ -300,6 +300,7 @@ section {
   text-transform: uppercase;
 }
 
+
 @media (max-width: 768px) {
   .certification-badge {
     padding: 1.5rem;
