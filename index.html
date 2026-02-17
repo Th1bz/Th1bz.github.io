@@ -22,29 +22,20 @@ define('DEV_BRAND', 'Th1bz.');
     <meta name="theme-color" content="#150c29" />
     <!-- Pour Safari sur iOS -->
     <meta name="mobile-web-app-capable" content="yes" />
-    <meta
-        name="apple-mobile-web-app-status-bar-style"
-        content="black-translucent" />
-    <meta
-        name="description"
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="description"
         content="Portfolio de Thibault Winkelsass - Développeur Full Stack certifié niveau 5 (Bac+2) à Strasbourg. Création de sites web et applications sur mesure." />
-    <meta
-        name="keywords"
+    <meta name="keywords"
         content="développeur web, full stack, portfolio, projets web, Strasbourg, Symfony, React, Node.js, PHP, JavaScript, développeur frontend, développeur backend, titre professionnel, RNCP" />
     <meta name="author" content="Thibault Winkelsass" />
     <meta name="robots" content="index, follow" />
-    <meta
-        property="og:title"
-        content="Thibault Winkelsass - Développeur Full Stack à Strasbourg" />
-    <meta
-        property="og:description"
+    <meta property="og:title" content="Thibault Winkelsass - Développeur Full Stack à Strasbourg" />
+    <meta property="og:description"
         content="Portfolio de Thibault Winkelsass - Développeur Full Stack - Création de sites web et applications sur mesure." />
     <meta property="og:type" content="website" />
     <title>Portfolio - Thibault Winkelsass - Développeur Full Stack</title>
     <!-- Bootstrap CSS -->
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-        rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles/main.css" />
     <link rel="stylesheet" href="styles/fixed-elements.css" />
@@ -58,13 +49,9 @@ define('DEV_BRAND', 'Th1bz.');
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="512x512" href="assets/favicons/android-chrome-512x512.png">
     <!-- Font Awesome -->
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <!-- EmailJS -->
-    <script
-        type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 
 <body>
@@ -84,12 +71,10 @@ define('DEV_BRAND', 'Th1bz.');
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#accueil"><?php echo DEV_BRAND ?></a>
-            <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarNav">
+            <a class="navbar-brand" href="#accueil">
+                <?php echo DEV_BRAND ?>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -263,28 +248,17 @@ define('DEV_BRAND', 'Th1bz.');
                 <div class="certification-badge">
                     <div class="row align-items-center">
                         <!-- Logo STUDI à gauche -->
-                        <div
-                            class="col-12 col-md-3 order-1 order-md-1 text-center text-md-start">
-                            <a
-                                href="https://www.studi.com/fr/formation/developpement-web/graduate-developpeur-front-end/"
-                                target="_blank"
-                                class="text-decoration-none">
-                                <img
-                                    src="assets/Studi_logo.svg"
-                                    alt="Logo STUDI"
-                                    class="certification-logo" />
+                        <div class="col-12 col-md-3 order-1 order-md-1 text-center text-md-start">
+                            <a href="https://www.studi.com/fr/formation/developpement-web/graduate-developpeur-front-end/"
+                                target="_blank" class="text-decoration-none">
+                                <img src="assets/Studi_logo.svg" alt="Logo STUDI" class="certification-logo" />
                             </a>
                         </div>
                         <!-- Logo République française à droite -->
-                        <div
-                            class="col-12 col-md-3 order-3 order-md-3 text-center text-md-end">
-                            <a
-                                href="https://www.francecompetences.fr/recherche/rncp/37674/"
-                                target="_blank"
+                        <div class="col-12 col-md-3 order-3 order-md-3 text-center text-md-end">
+                            <a href="https://www.francecompetences.fr/recherche/rncp/37674/" target="_blank"
                                 class="text-decoration-none">
-                                <img
-                                    src="assets/logo_republique-francaise.png"
-                                    alt="Logo République française"
+                                <img src="assets/logo_republique-francaise.png" alt="Logo République française"
                                     class="certification-logo" />
                             </a>
                         </div>
@@ -292,9 +266,7 @@ define('DEV_BRAND', 'Th1bz.');
                         <div class="col-12 col-md-6 order-2 order-md-2 text-center">
                             <div class="certification-text mt-5">
                                 <h4>Certification</h4>
-                                <a
-                                    href="https://www.francecompetences.fr/recherche/rncp/37674/"
-                                    target="_blank"
+                                <a href="https://www.francecompetences.fr/recherche/rncp/37674/" target="_blank"
                                     class="text-decoration-none">
                                     <p>
                                         Titre Professionnel Niveau 5 (Bac+2) - Développeur Web et
@@ -312,9 +284,7 @@ define('DEV_BRAND', 'Th1bz.');
     </section>
 
     <!-- Section Projets -->
-    <section
-        id="projets"
-        class="projects min-vh-100 d-flex align-items-center py-5">
+    <section id="projets" class="projects min-vh-100 d-flex align-items-center py-5">
         <div class="container">
             <h2 class="section-title text-center mb-5">Mes Projets</h2>
             <p class="text-center mb-4 project-instruction">
@@ -354,6 +324,7 @@ define('DEV_BRAND', 'Th1bz.');
                     <button class="filter-btn active" data-filter="all">Tous</button>
                     <button class="filter-btn" data-filter="web">Sites Web</button>
                     <button class="filter-btn" data-filter="app">Applications</button>
+                    <button class="filter-btn" data-filter="plugins">Plugins</button>
                     <!-- <button class="filter-btn" data-filter="ecommerce">
               E-commerce
             </button>
@@ -371,14 +342,12 @@ define('DEV_BRAND', 'Th1bz.');
                     <div class="col-md-6 col-lg-4 portfolio-item" data-category="web">
                         <div class="portfolio-card">
                             <div class="portfolio-img">
-                                <img
-                                    src="assets/projects/placeholder.svg"
-                                    alt="Projet exemple"
-                                    class="img-fluid" />
+                                <img src="assets/projects/placeholder.svg" alt="Projet exemple" class="img-fluid" />
                                 <div class="portfolio-overlay">
                                     <div class="portfolio-buttons">
                                         <a href="#" class="view-details"><i class="fas fa-eye"></i></a>
-                                        <a href="#" target="_blank" class="view-live"><i class="fas fa-external-link-alt"></i></a>
+                                        <a href="#" target="_blank" class="view-live"><i
+                                                class="fas fa-external-link-alt"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -406,16 +375,17 @@ define('DEV_BRAND', 'Th1bz.');
     </section>
 
     <!-- Section Tarifs -->
-    <section
-        id="tarifs"
-        class="pricing min-vh-100 d-flex align-items-center py-5">
+    <section id="tarifs" class="pricing min-vh-100 d-flex align-items-center py-5">
         <div class="container">
             <h2 class="section-title text-center mb-5">Tarifs & Prestations</h2>
             <p class="text-center mb-5 pricing-disclaimer">
-                Les tarifs présentés ci-dessous sont donnés à titre indicatif afin de vous fournir un premier repère budgétaire.
+                Les tarifs présentés ci-dessous sont donnés à titre indicatif afin de vous fournir un premier repère
+                budgétaire.
                 Chaque projet étant unique, n'hésitez pas à me contacter pour obtenir un devis personnalisé
                 et adapté précisément à vos besoins. <br><br>
-                En tant qu’auto-entrepreneur, les prix sont indiqués hors taxes (TVA non applicable, <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048826700/2025-01-01/" target="_blank" rel="noopener noreferrer">article 293 B</a> du Code général des impôts).
+                En tant qu’auto-entrepreneur, les prix sont indiqués hors taxes (TVA non applicable, <a
+                    href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048826700/2025-01-01/"
+                    target="_blank" rel="noopener noreferrer">article 293 B</a> du Code général des impôts).
             </p>
             <div class="row g-4">
                 <!-- Site Vitrine -->
@@ -529,7 +499,7 @@ define('DEV_BRAND', 'Th1bz.');
 
                             <!-- Séparateur -->
                             <div class="separator my-3"></div>
-                            
+
                             <!-- Mention facturation -->
                             <div class="extra-work-note">
                                 <small>
@@ -623,9 +593,7 @@ define('DEV_BRAND', 'Th1bz.');
     </section>
 
     <!-- Section Contact -->
-    <section
-        id="contact"
-        class="contact min-vh-100 d-flex align-items-center py-5">
+    <section id="contact" class="contact min-vh-100 d-flex align-items-center py-5">
         <div class="container">
             <h2 class="section-title text-center mb-5">Me Contacter</h2>
 
@@ -635,48 +603,28 @@ define('DEV_BRAND', 'Th1bz.');
                         <div class="row g-4">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="name"
-                                        name="name"
-                                        placeholder=""
+                                    <input type="text" class="form-control" id="name" name="name" placeholder=""
                                         required />
                                     <label for="name">Nom</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input
-                                        type="email"
-                                        class="form-control"
-                                        id="email"
-                                        name="email"
-                                        placeholder=""
+                                    <input type="email" class="form-control" id="email" name="email" placeholder=""
                                         required />
                                     <label for="email">Email</label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="subject"
-                                        name="subject"
-                                        placeholder=""
+                                    <input type="text" class="form-control" id="subject" name="subject" placeholder=""
                                         required />
                                     <label for="subject">Sujet</label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
-                                    <textarea
-                                        class="form-control"
-                                        id="message"
-                                        name="message"
-                                        rows="6"
-                                        placeholder=""
+                                    <textarea class="form-control" id="message" name="message" rows="6" placeholder=""
                                         required></textarea>
                                     <label for="message">Message</label>
                                 </div>
@@ -697,7 +645,9 @@ define('DEV_BRAND', 'Th1bz.');
                         <div class="contact-info-item">
                             <i class="fas fa-map-marker-alt"></i>
                             <h3>Localisation</h3>
-                            <p><?php echo LOCALISATION ?></p>
+                            <p>
+                                <?php echo LOCALISATION ?>
+                            </p>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -705,7 +655,9 @@ define('DEV_BRAND', 'Th1bz.');
                             <i class="fas fa-phone"></i>
                             <h3>Téléphone</h3>
                             <p>Laissez moi un message Vocal ou SMS au :</p>
-                            <p><a href="tel:<?php echo PHONE_CONTACT ?>"><?php echo PHONE_CONTACT ?></a></p>
+                            <p><a href="tel:<?php echo PHONE_CONTACT ?>">
+                                    <?php echo PHONE_CONTACT ?>
+                                </a></p>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -713,7 +665,9 @@ define('DEV_BRAND', 'Th1bz.');
                             <i class="fas fa-envelope"></i>
                             <h3>Email</h3>
                             <p>
-                                <a href="mailto:<?php echo EMAIL_CONTACT ?>"><?php echo EMAIL_CONTACT ?></a>
+                                <a href="mailto:<?php echo EMAIL_CONTACT ?>">
+                                    <?php echo EMAIL_CONTACT ?>
+                                </a>
                             </p>
                         </div>
                     </div>
@@ -734,16 +688,10 @@ define('DEV_BRAND', 'Th1bz.');
                         modernes et innovantes.
                     </p>
                     <div class="social-links mt-4">
-                        <a
-                            href="<?php echo GITHUB_URL ?>"
-                            target="_blank"
-                            rel="noopener noreferrer">
+                        <a href="<?php echo GITHUB_URL ?>" target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-github"></i>
                         </a>
-                        <a
-                            href="<?php echo LINKEDIN_URL ?>"
-                            target="_blank"
-                            rel="noopener noreferrer">
+                        <a href="<?php echo LINKEDIN_URL ?>" target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-linkedin"></i>
                         </a>
                         <a href="mailto:<?php echo EMAIL_CONTACT ?>">
@@ -771,15 +719,21 @@ define('DEV_BRAND', 'Th1bz.');
                     <ul class="footer-contact">
                         <li>
                             <i class="fas fa-map-marker-alt"></i>
-                            <span><?php echo LOCALISATION ?></span>
+                            <span>
+                                <?php echo LOCALISATION ?>
+                            </span>
                         </li>
                         <li>
                             <i class="fas fa-envelope"></i>
-                            <a href="mailto:<?php echo EMAIL_CONTACT ?>"><?php echo EMAIL_CONTACT ?></a>
+                            <a href="mailto:<?php echo EMAIL_CONTACT ?>">
+                                <?php echo EMAIL_CONTACT ?>
+                            </a>
                         </li>
                         <li>
                             <i class="fas fa-phone"></i>
-                            <a href="tel:<?php echo PHONE_CONTACT ?>"><?php echo PHONE_CONTACT ?></a>
+                            <a href="tel:<?php echo PHONE_CONTACT ?>">
+                                <?php echo PHONE_CONTACT ?>
+                            </a>
                         </li>
                     </ul>
                 </div>

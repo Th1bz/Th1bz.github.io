@@ -106,7 +106,7 @@
     "technologies": ["Wordpress", "POO PHP", "JavaScript"],
     "url": "#",
     "status": "disabled",
-    "category": "app",
+    "category": "plugins",
     "client": "Humanis",
     "date": "Novembre 2025",
     "fullDescription": "Plugin Wordpress pour gérer le personnel de l'entreprise et générer dynamiquement sous format SVG (landscape et A3) le trombinoscope."
@@ -120,7 +120,7 @@
     "technologies": ["Wordpress", "PHP", "JavaScript"],
     "url": "#",
     "status": "disabled",
-    "category": "app",
+    "category": "plugins",
     "client": "Humanis",
     "date": "Février 2025",
     "fullDescription": "Plugin WordPress permettant le scan de documents papier avec lecture automatique des numéros de page encodés dans des marqueurs ArUco, assurant un classement et un versionning fiables sans intervention manuelle."
