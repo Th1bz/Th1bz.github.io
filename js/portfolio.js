@@ -6,7 +6,7 @@
 import { loadProjects } from "./projectsManager.js";
 
 let visibleItems = 6; // Nombre d'éléments visibles initialement
-let currentCategory = "none"; // Catégorie active par défaut
+let currentCategory = "all"; // Catégorie active par défaut
 let expandedCard = null; // Carte actuellement agrandie
 
 /**
@@ -21,12 +21,12 @@ async function initPortfolio() {
     setupCardExpansion(); // Remplacé setupModalDetails
 
     // Appliquer le filtre "none" dès l'initialisation
-    filterProjects("none");
+    filterProjects("all");
 
     // Sélectionner visuellement le bouton "none" par défaut
     document.querySelectorAll(".filter-btn").forEach((btn) => {
       btn.classList.remove("active");
-      if (btn.getAttribute("data-filter") === "none") {
+      if (btn.getAttribute("data-filter") === "all") {
         btn.classList.add("active");
       }
     });
